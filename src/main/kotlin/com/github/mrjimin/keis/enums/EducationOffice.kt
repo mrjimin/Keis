@@ -1,6 +1,6 @@
 package com.github.mrjimin.keis.enums
 
-enum class OfficeRegion(val korean: String, val code: String) {
+enum class EducationOffice(val korean: String, val code: String) {
 
     SEOUL("서울특별시교육청", "B10"),
     BUSAN("부산광역시교육청", "C10"),
@@ -22,6 +22,6 @@ enum class OfficeRegion(val korean: String, val code: String) {
 
     companion object {
         private val map = entries.associateBy { it.code }
-        fun fromCode(code: String): OfficeRegion? = map[code]
+        fun fromCode(code: String): EducationOffice? = map[code]
     }
 }
