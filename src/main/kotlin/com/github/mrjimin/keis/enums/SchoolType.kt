@@ -1,6 +1,7 @@
 package com.github.mrjimin.keis.enums
 
-enum class SchoolType(val value: String) {
+enum class SchoolType(val korean: String) {
+
     UNKNOWN("알수없음"),
     INTERNATIONAL("외국인학교"),
     KINDERGARTEN("유치원"),
@@ -10,6 +11,7 @@ enum class SchoolType(val value: String) {
     SPECIAL("특수학교");
 
     companion object {
-        fun from(name: String): SchoolType = entries.find { it.value == name } ?: UNKNOWN
+        private val map = entries.associateBy { it.korean }
+        fun from(name: String): SchoolType = map[name] ?: UNKNOWN
     }
 }
