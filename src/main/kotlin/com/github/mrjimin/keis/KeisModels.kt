@@ -26,10 +26,4 @@ interface KeisRowContainer<T> {
 
     val rows: List<T>
         get() = items.firstOrNull { it.row != null }?.row ?: emptyList()
-
-    val allRows: List<T>
-        get() = items.flatMap { it.row ?: emptyList() }
-
-    val allHeads: List<KeisHead>
-        get() = items.flatMap { it.head ?: emptyList() }
 }
