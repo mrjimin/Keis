@@ -24,8 +24,6 @@ repositories {
     maven { url = uri("https://jitpack.io") }
 }
 
-
-
 dependencies {
     implementation("com.github.mrjimin:Keis:Tag")
 }
