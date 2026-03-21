@@ -2,6 +2,7 @@ package com.github.mrjimin.keis.enums
 
 enum class EducationOffice(val korean: String, val code: String) {
 
+    UNKNOWN("알수없음", ""),
     SEOUL("서울특별시교육청", "B10"),
     BUSAN("부산광역시교육청", "C10"),
     DAEGU("대구광역시교육청", "D10"),
@@ -21,7 +22,9 @@ enum class EducationOffice(val korean: String, val code: String) {
     JEJU("제주특별자치도교육청", "T10");
 
     companion object {
-        private val map = entries.associateBy { it.code }
-        fun fromCode(code: String): EducationOffice? = map[code]
+        private val codeMap = entries.associateBy { it.code }
+        private val nameMap = entries.associateBy { it.korean }
+        fun from(code: String, name: String): EducationOffice =
+            codeMap[code] ?: nameMap[name] ?: UNKNOWN
     }
 }

@@ -2,6 +2,7 @@ package com.github.mrjimin.keis.dto
 
 import com.github.mrjimin.keis.KeisRowContainer
 import com.github.mrjimin.keis.KeisWrapper
+import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolType
 import kotlinx.serialization.*
 
@@ -14,10 +15,10 @@ data class SchoolInfoResponse(
 @Serializable
 data class SchoolInfoRow(
     @SerialName("ATPT_OFCDC_SC_CODE")
-    val officeCode: String,
+    private val rawOfficeCode: String,
 
     @SerialName("ATPT_OFCDC_SC_NM")
-    val officeName: String,
+    private val rawOfficeName: String,
 
     @SerialName("SCHUL_NM")
     val schoolName: String,
@@ -26,7 +27,7 @@ data class SchoolInfoRow(
     val schoolCode: String,
 
     @SerialName("SCHUL_KND_SC_NM")
-    private val schoolTypeText: String,
+    private val rawSchoolType: String,
 
     @SerialName("ORG_RDNMA")
     val location: String,
@@ -37,6 +38,9 @@ data class SchoolInfoRow(
     @SerialName("HS_GNRL_BUSNS_SC_NM")
     val businessType: String?,
 ) {
-    @Transient
-    val schoolType: SchoolType = SchoolType.from(schoolTypeText)
+    val schoolType: SchoolType
+        get() = SchoolType.from(rawSchoolType)
+
+    val office: EducationOffice
+        get() = EducationOffice.from(rawOfficeCode, rawOfficeName)
 }
