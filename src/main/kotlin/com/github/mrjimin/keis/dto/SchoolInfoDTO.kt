@@ -26,7 +26,7 @@ data class SchoolInfoRow(
     val schoolCode: String,
 
     @SerialName("SCHUL_KND_SC_NM")
-    val schoolTypeText: String,
+    private val schoolTypeText: String,
 
     @SerialName("ORG_RDNMA")
     val location: String,
