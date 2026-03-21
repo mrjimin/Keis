@@ -1,4 +1,4 @@
-# KEIS Kotlin Client
+# Keis
 
 Kotlin + Ktor 기반 NEIS(교육청) API 클라이언트 라이브러리
 
