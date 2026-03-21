@@ -25,7 +25,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.mrjimin:Keis:Tag")
+    implementation("com.github.mrjimin:Keis:0.0.1")
 }
 ```
 
