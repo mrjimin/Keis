@@ -9,11 +9,11 @@ import kotlinx.serialization.*
 @Serializable
 data class SchoolInfoResponse(
     @SerialName("schoolInfo")
-    override val items: List<KeisWrapper<SchoolInfoRow>>
-) : KeisRowContainer<SchoolInfoRow>
+    override val items: List<KeisWrapper<SchoolInfo>>
+) : KeisRowContainer<SchoolInfo>
 
 @Serializable
-data class SchoolInfoRow(
+data class SchoolInfo(
     @SerialName("ATPT_OFCDC_SC_CODE")
     private val rawOfficeCode: String,
 
