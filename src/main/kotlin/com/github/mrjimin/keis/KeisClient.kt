@@ -13,6 +13,10 @@ class KeisClient(
     val config: KeisConfig,
     val client: HttpClient = defaultClient
 ) {
+    constructor(key: String) : this(
+        config = KeisConfig(key)
+    )
+
     companion object {
         val defaultClient: HttpClient by lazy {
             HttpClient(CIO) {
