@@ -33,14 +33,10 @@ dependencies {
 
 🚀 Quick Start
 ```kotlin
-val client = KeisClient(
-    KeisConfig(key = System.getenv("KEIS_API_KEY"))
-)
+val client = KeisClient("YOUR_API_KEY")
 
-// 가장 많이 사용하는 방식 (추천)
-val school = client.schoolInfoExactOrNull("우석고등학교")
-
-school?.let { println(it) }
+val school = client.schoolInfo("우석고등학교")
+println(school)
 ```
 
 ---

@@ -1,6 +1,14 @@
 package com.github.mrjimin.keis
 
 import kotlinx.serialization.*
+import kotlinx.serialization.json.*
+
+object KeisModule {
+
+    val json: Json = Json {
+        ignoreUnknownKeys = true
+    }
+}
 
 @Serializable
 data class KeisWrapper<T>(
@@ -25,5 +33,5 @@ interface KeisRowContainer<T> {
     val items: List<KeisWrapper<T>>
 
     val rows: List<T>
-        get() = items.firstOrNull { it.row != null }?.row ?: emptyList()
+        get() = items.flatMap { it.row ?: emptyList() }
 }

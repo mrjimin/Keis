@@ -15,10 +15,10 @@ data class SchoolInfoResponse(
 @Serializable
 data class SchoolInfo(
     @SerialName("ATPT_OFCDC_SC_CODE")
-    private val rawOfficeCode: String,
+    private val officeCode: String,
 
     @SerialName("ATPT_OFCDC_SC_NM")
-    private val rawOfficeName: String,
+    private val officeName: String,
 
     @SerialName("SCHUL_NM")
     val schoolName: String,
@@ -27,7 +27,7 @@ data class SchoolInfo(
     val schoolCode: String,
 
     @SerialName("SCHUL_KND_SC_NM")
-    private val rawSchoolType: String,
+    private val schoolTypeRaw: String,
 
     @SerialName("ORG_RDNMA")
     val location: String,
@@ -38,9 +38,8 @@ data class SchoolInfo(
     @SerialName("HS_GNRL_BUSNS_SC_NM")
     val businessType: String?,
 ) {
-    val schoolType: SchoolType
-        get() = SchoolType.from(rawSchoolType)
-
-    val office: EducationOffice
-        get() = EducationOffice.from(rawOfficeCode, rawOfficeName)
+    val schoolType
+        get() = SchoolType.from(schoolTypeRaw)
+    val office
+        get() = EducationOffice.from(officeCode, officeName)
 }
