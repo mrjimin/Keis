@@ -1,6 +1,6 @@
 package com.github.mrjimin.keis.enums
 
-enum class EducationOffice(val korean: String, val code: String) {
+enum class EducationOffice(val text: String, val code: String) {
 
     UNKNOWN("알수없음", ""),
     SEOUL("서울특별시교육청", "B10"),
@@ -23,8 +23,8 @@ enum class EducationOffice(val korean: String, val code: String) {
 
     companion object {
         private val codeMap = entries.associateBy { it.code }
-        private val nameMap = entries.associateBy { it.korean }
+        private val textMap = entries.associateBy { it.text }
         fun from(code: String, name: String): EducationOffice =
-            codeMap[code] ?: nameMap[name] ?: UNKNOWN
+            codeMap[code] ?: textMap[name] ?: UNKNOWN
     }
 }

@@ -1,10 +1,10 @@
 package com.github.mrjimin.keis
 
-import com.github.mrjimin.keis.enums.KeisType
+import com.github.mrjimin.keis.enums.ResponseType
 
 data class KeisConfig(
     val key: String,
-    val type: KeisType = KeisType.JSON,
+    val type: ResponseType = ResponseType.JSON,
     val pIndex: Int = 1,
     val pSize: Int = 100,
     val stats: Boolean = false
