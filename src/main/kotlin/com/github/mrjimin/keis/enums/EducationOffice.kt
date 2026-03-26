@@ -24,7 +24,7 @@ enum class EducationOffice(val text: String, val code: String) {
     companion object {
         private val codeMap = entries.associateBy { it.code }
         private val textMap = entries.associateBy { it.text }
-        fun from(code: String, name: String): EducationOffice =
+        fun from(code: String, name: String = ""): EducationOffice =
             codeMap[code] ?: textMap[name] ?: UNKNOWN
     }
 }
