@@ -44,3 +44,7 @@ println(school)
 ## 📚 API
 
 ### [SchoolInfo](https://github.com/mrjimin/Keis/blob/main/example/src/main/kotlin/com/github/mrjimin/keis/example/SchoolInfoExample.kt)
+
+## 참고
+- NEIS Open API 공식 문서: [https://open.neis.go.kr](https://open.neis.go.kr)
+- 다른 구현 참고: [nnnlog/neis](https://github.com/nnnlog/neis), [kimcore/neis.kt](https://github.com/kimcore/neis.kt)
