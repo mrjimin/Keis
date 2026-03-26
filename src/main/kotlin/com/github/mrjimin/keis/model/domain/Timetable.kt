@@ -8,7 +8,7 @@ data class Timetable(
     val schoolCode: String,
     val schoolName: String,
     val grade: Int,
-    val classNumber: Int,
+    val classNumber: Int?,
     val period: Int,
     val year: Int,
     val semester: Int,

@@ -9,6 +9,40 @@ import com.github.mrjimin.keis.model.dto.TimetableDto
 import io.ktor.client.request.*
 import java.time.LocalDate
 
+//private suspend fun KeisClient.fetchTimetable(
+//    officeCode: String,
+//    schoolCode: String,
+//    schoolType: SchoolType,
+//    from: LocalDate,
+//    to: LocalDate,
+//    grade: Int? = null,
+//    classNumber: Int? = null,
+//    major: String? = null,
+//    fillMissing: Boolean = false
+//): List<Timetable> {
+//
+//    val timetables = requestRows<TimetableDto>(schoolType.endpoint) {
+//        parameter("ATPT_OFCDC_SC_CODE", officeCode)
+//        parameter("SD_SCHUL_CODE", schoolCode)
+//        parameter("TI_FROM_YMD", dateFormat.format(from))
+//        parameter("TI_TO_YMD", dateFormat.format(to))
+//        grade?.let { parameter("GRADE", it) }
+//        classNumber?.let { parameter("CLASS_NM", it) }
+//        major?.let { parameter("DDDEP_NM", it) }
+//    }.map { it.toDomain() }
+//
+//    if (!fillMissing) return timetables
+//
+//    return timetables.map {
+//        it.copy(
+//            order = it.order ?: "",
+//            major = it.major ?: major,
+//            content = it.content.ifEmpty { "" },
+//            classNumber = it.classNumber ?: classNumber
+//        )
+//    }
+//}
+
 private suspend fun KeisClient.fetchTimetable(
     officeCode: String,
     schoolCode: String,
@@ -55,13 +89,13 @@ suspend fun KeisClient.timetableBySchool(
     major: String? = null
 ): List<Timetable> {
     return fetchTimetable(
-        officeCode = school.office.code,
-        schoolCode = school.code,
-        schoolType = school.type,
-        from = from,
-        to = to,
-        grade = grade,
-        classNumber = classNumber,
-        major = major
+        school.office.code,
+        school.code,
+        school.type,
+        from,
+        to,
+        grade,
+        classNumber,
+        major
     )
 }
