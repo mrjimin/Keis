@@ -26,17 +26,13 @@ private suspend fun KeisClient.fetchTimetable(
         parameter("SD_SCHUL_CODE", schoolCode)
         parameter("TI_FROM_YMD", dateFormat.format(from))
         parameter("TI_TO_YMD", dateFormat.format(to))
-
         grade?.let { parameter("GRADE", it) }
         classNumber?.let { parameter("CLASS_NM", it) }
         major?.let { parameter("DDDEP_NM", it) }
     }.map { it.toDomain() }
 }
 
-private suspend fun KeisClient.executeTimetable(
-    query: TimetableQuery
-): List<Timetable> {
-
+private suspend fun KeisClient.executeTimetable(query: TimetableQuery): List<Timetable> {
     val result = fetchTimetable(
         query.officeCode,
         query.schoolCode,
@@ -47,22 +43,14 @@ private suspend fun KeisClient.executeTimetable(
         query.classNumber,
         query.major
     )
-
-    return if (query.fillMissing) {
-        result.fillMissing(query.maxPeriod)
-    } else result
+    return if (query.fillMissing) result.fillMissing(query.maxPeriod) else result
 }
 
 suspend fun KeisClient.timetable(
     school: School,
     block: TimetableQueryBuilder.() -> Unit = {}
 ): List<Timetable> {
-    return timetable(
-        school.office.code,
-        school.code,
-        school.type,
-        block
-    )
+    return timetable(school.office.code, school.code, school.type, block)
 }
 
 suspend fun KeisClient.timetable(
@@ -71,17 +59,11 @@ suspend fun KeisClient.timetable(
     schoolType: SchoolType,
     block: TimetableQueryBuilder.() -> Unit = {}
 ): List<Timetable> {
-
-    val query = TimetableQueryBuilder(
-        officeCode,
-        schoolCode,
-        schoolType
-    ).apply(block).build()
-
+    val query = TimetableQueryBuilder(officeCode, schoolCode, schoolType).apply(block).build()
     return executeTimetable(query)
 }
 
-suspend fun KeisClient.timetable(
+suspend fun KeisClient.timetableBySchool(
     school: School,
     from: LocalDate = startOfWeek(),
     to: LocalDate = endOfWeek(),
@@ -91,33 +73,30 @@ suspend fun KeisClient.timetable(
     fillMissing: Boolean = false,
     maxPeriod: Int = school.type.defaultMaxPeriod
 ): List<Timetable> {
-
     return executeTimetable(
         TimetableQuery(
-            officeCode = school.office.code,
-            schoolCode = school.code,
-            schoolType = school.type,
-            from = from,
-            to = to,
-            grade = grade,
-            classNumber = classNumber,
-            major = major,
-            fillMissing = fillMissing,
-            maxPeriod = maxPeriod
+            school.office.code,
+            school.code,
+            school.type,
+            from,
+            to,
+            grade,
+            classNumber,
+            major,
+            fillMissing,
+            maxPeriod
         )
     )
 }
 
 private fun List<Timetable>.fillMissing(maxPeriod: Int): List<Timetable> {
     if (isEmpty()) return emptyList()
-
     return groupBy { it.date }
         .flatMap { (_, dayList) ->
             val map = dayList.associateBy { it.period }
             val template = dayList.first()
-
             (1..maxPeriod).map { period ->
-                map[period] ?: template.toEmpty(period)
+                map.getOrElse(period) { template.toEmpty(period) }
             }
         }
 }

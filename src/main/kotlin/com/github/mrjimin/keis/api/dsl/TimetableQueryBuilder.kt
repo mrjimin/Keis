@@ -31,6 +31,11 @@ class TimetableQueryBuilder(
         this.major = value
     }
 
+    fun date(date: LocalDate) {
+        this.from = date
+        this.to = date
+    }
+
     fun dateRange(from: LocalDate, to: LocalDate) {
         this.from = from
         this.to = to
