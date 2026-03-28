@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.mrjimin:Keis:0.0.1")
+    implementation("com.github.mrjimin:Keis:0.0.2")
 }
 ```
 
