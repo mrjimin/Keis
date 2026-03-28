@@ -13,10 +13,9 @@ Kotlin + Ktor 기반 NEIS(교육청) API 클라이언트 라이브러리
 ## ✨ Features
 
 * 코루틴 기반 비동기 API
-* 간단한 Client 호출 (`client.school(...)`)
+* 간단한 Client 호출
 * DTO → Domain 자동 변환
-* 시간표 누락 교시 자동 보정 (`fillMissing`)
-* Kotlin 친화적인 API 설계
+* Kotlin 친화적 DSL API 설계
 
 ---
 
@@ -58,7 +57,7 @@ client.schoolByCode(educationOffice: EducationOffice, schoolCode: Int): School?
 ### [Timetable](example/src/main/kotlin/com/github/mrjimin/keis/example/TimetableExample.kt)
 ```kotlin
 client.timetable(...): List<Timetable>
-client.timetableBySchool(...): List<Timetable>
+client.timetable(...) {}: List<Timetable>
 ```
 
 ---
