@@ -8,7 +8,7 @@ enum class BusinessType(val value: String) {
 
     companion object {
         private val map = entries.associateBy { it.value }
-        fun from(name: String): BusinessType = map[name] ?: UNKNOWN
+        fun from(name: String?): BusinessType = map[name] ?: UNKNOWN
     }
 
 }

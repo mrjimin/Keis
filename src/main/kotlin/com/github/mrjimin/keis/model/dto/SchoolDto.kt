@@ -1,5 +1,6 @@
 package com.github.mrjimin.keis.model.dto
 
+import com.github.mrjimin.keis.enums.BusinessType
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolGender
 import com.github.mrjimin.keis.enums.SchoolType
@@ -33,7 +34,7 @@ data class SchoolDto(
     val location: String,
 
     @SerialName("HS_GNRL_BUSNS_SC_NM")
-    val businessType: String?,
+    val businessTypeText: String?,
 
     @SerialName("HMPG_ADRES")
     val homepageUrl: String
@@ -46,7 +47,7 @@ data class SchoolDto(
         SchoolType.from(typeText),
         SchoolGender.from(genderText),
         location,
-        businessType,
+        BusinessType.from(businessTypeText),
         homepageUrl,
     )
 }
