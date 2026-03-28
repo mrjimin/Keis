@@ -6,16 +6,16 @@
 학교 조회
 
 ```kotlin
-val client = KeisClient("YOUR_API_KEY")
-
 // 여러 학교 조회
-val schools = client.schools("전주고") // 전주고등학교 , 전주고등학교부설방송통신고등학교
+val schools = client.schools("전주고")
+schools.forEach { println(it.name) }
+// 출력 예: 전주고등학교, 전주고등학교부설방송통신고등학교
 
 // 단일 학교 조회
-val school = client.school("우석고") // 우석고등학교
+val school = client.school("우석고")
+println(school?.name) // 우석고등학교
 
 // SchoolContext 변환
-val context = school!!.toContext(client)
 val schoolContext = client.schoolContext("우석고")
 ```
 
@@ -31,7 +31,7 @@ val filled = context.timetable {
     fillMissing()
 }
 
-// 특정 학년 / 반
+// 특정 학년 / 반 조회
 val classTimetable = context.timetable {
     grade(1)
     classNumber(1)

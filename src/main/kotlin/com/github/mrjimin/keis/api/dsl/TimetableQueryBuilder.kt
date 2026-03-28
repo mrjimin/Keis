@@ -66,16 +66,16 @@ class TimetableQueryBuilder(
 
     fun build(): TimetableQuery {
         return TimetableQuery(
-            officeCode = officeCode,
-            schoolCode = schoolCode,
-            schoolType = schoolType,
-            from = from,
-            to = to,
-            grade = grade,
-            classNumber = classNumber,
-            major = major,
-            fillMissing = fillMissing,
-            maxPeriod = maxPeriod ?: schoolType.defaultMaxPeriod
+            officeCode,
+            schoolCode,
+            schoolType,
+            from,
+            to,
+            grade,
+            classNumber,
+            major,
+            fillMissing,
+            maxPeriod ?: schoolType.defaultMaxPeriod
         )
     }
 }
