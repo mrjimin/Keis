@@ -40,16 +40,16 @@ data class TimetableDto(
     private val dateText: String,
 
     @SerialName("ORD_SC_NM")
-    val order: String?,
+    val order: String? = null,
 
     @SerialName("DDDEP_NM")
-    val major: String?,
+    val major: String? = null,
 
     @SerialName("CLRM_NM")
-    val classroom: String?,
+    val classroom: String? = null,
 
     @SerialName("ITRT_CNTNT")
-    val content: String = ""
+    val content: String? = null
 ) {
 
     fun toDomain(): Timetable = Timetable(

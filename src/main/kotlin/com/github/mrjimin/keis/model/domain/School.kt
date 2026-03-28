@@ -1,6 +1,7 @@
 package com.github.mrjimin.keis.model.domain
 
 import com.github.mrjimin.keis.enums.EducationOffice
+import com.github.mrjimin.keis.enums.SchoolGender
 import com.github.mrjimin.keis.enums.SchoolType
 
 data class School(
@@ -9,6 +10,7 @@ data class School(
     val name: String,
     val nameEn: String?,
     val type: SchoolType,
+    val gender: SchoolGender,
     val location: String,
     val businessType: String?,
     val homepageUrl: String,

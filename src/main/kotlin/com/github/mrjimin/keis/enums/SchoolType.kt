@@ -1,7 +1,6 @@
 package com.github.mrjimin.keis.enums
 
 enum class SchoolType(val text: String, val endpoint: String) {
-
     UNKNOWN("알수없음", "unknown"),
     ELEMENTARY("초등학교", "elsTimetable"),
     MIDDLE("중학교", "misTimetable"),

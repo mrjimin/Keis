@@ -1,6 +1,7 @@
 package com.github.mrjimin.keis.model.dto
 
 import com.github.mrjimin.keis.enums.EducationOffice
+import com.github.mrjimin.keis.enums.SchoolGender
 import com.github.mrjimin.keis.enums.SchoolType
 import com.github.mrjimin.keis.model.domain.School
 import kotlinx.serialization.*
@@ -8,10 +9,10 @@ import kotlinx.serialization.*
 @Serializable
 data class SchoolDto(
     @SerialName("ATPT_OFCDC_SC_CODE")
-    private val officeCode: String,
+    val officeCode: String,
 
     @SerialName("ATPT_OFCDC_SC_NM")
-    private val officeName: String,
+    val officeName: String,
 
     @SerialName("SD_SCHUL_CODE")
     val code: String,
@@ -23,7 +24,10 @@ data class SchoolDto(
     val nameEn: String?,
 
     @SerialName("SCHUL_KND_SC_NM")
-    private val typeText: String,
+    val typeText: String,
+
+    @SerialName("COEDU_SC_NM")
+    val genderText: String,
 
     @SerialName("ORG_RDNMA")
     val location: String,
@@ -40,6 +44,7 @@ data class SchoolDto(
         name,
         nameEn,
         SchoolType.from(typeText),
+        SchoolGender.from(genderText),
         location,
         businessType,
         homepageUrl,

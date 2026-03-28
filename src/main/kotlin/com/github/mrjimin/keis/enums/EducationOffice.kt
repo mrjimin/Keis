@@ -1,7 +1,6 @@
 package com.github.mrjimin.keis.enums
 
 enum class EducationOffice(val text: String, val code: String) {
-
     UNKNOWN("알수없음", ""),
     SEOUL("서울특별시교육청", "B10"),
     BUSAN("부산광역시교육청", "C10"),
