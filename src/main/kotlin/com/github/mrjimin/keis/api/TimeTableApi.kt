@@ -32,20 +32,6 @@ private suspend fun KeisClient.fetchTimetable(
     }.map { it.toDomain() }
 }
 
-private suspend fun KeisClient.executeTimetable(query: TimetableQuery): List<Timetable> {
-    val result = fetchTimetable(
-        query.officeCode,
-        query.schoolCode,
-        query.schoolType,
-        query.from,
-        query.to,
-        query.grade,
-        query.classNumber,
-        query.major
-    )
-    return if (query.fillMissing) result.fillMissing(query.maxPeriod) else result
-}
-
 suspend fun KeisClient.timetable(
     school: School,
     block: TimetableQueryBuilder.() -> Unit = {}
@@ -63,30 +49,18 @@ suspend fun KeisClient.timetable(
     return executeTimetable(query)
 }
 
-suspend fun KeisClient.timetableBySchool(
-    school: School,
-    from: LocalDate = startOfWeek(),
-    to: LocalDate = endOfWeek(),
-    grade: Int? = null,
-    classNumber: Int? = null,
-    major: String? = null,
-    fillMissing: Boolean = false,
-    maxPeriod: Int = school.type.defaultMaxPeriod
-): List<Timetable> {
-    return executeTimetable(
-        TimetableQuery(
-            school.office.code,
-            school.code,
-            school.type,
-            from,
-            to,
-            grade,
-            classNumber,
-            major,
-            fillMissing,
-            maxPeriod
-        )
+private suspend fun KeisClient.executeTimetable(query: TimetableQuery): List<Timetable> {
+    val result = fetchTimetable(
+        query.officeCode,
+        query.schoolCode,
+        query.schoolType,
+        query.from,
+        query.to,
+        query.grade,
+        query.classNumber,
+        query.major
     )
+    return if (query.fillMissing) result.fillMissing(query.maxPeriod) else result
 }
 
 private fun List<Timetable>.fillMissing(maxPeriod: Int): List<Timetable> {
