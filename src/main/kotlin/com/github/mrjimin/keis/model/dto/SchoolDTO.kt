@@ -8,7 +8,7 @@ import com.github.mrjimin.keis.model.domain.School
 import kotlinx.serialization.*
 
 @Serializable
-data class SchoolDto(
+data class SchoolDTO(
     @SerialName("ATPT_OFCDC_SC_CODE")
     val officeCode: String,
 

@@ -6,7 +6,7 @@ import com.github.mrjimin.keis.enums.SchoolType
 import com.github.mrjimin.keis.internal.*
 import com.github.mrjimin.keis.model.domain.School
 import com.github.mrjimin.keis.model.domain.Timetable
-import com.github.mrjimin.keis.model.dto.TimetableDto
+import com.github.mrjimin.keis.model.dto.TimetableDTO
 import com.github.mrjimin.keis.model.query.TimetableQuery
 import io.ktor.client.request.*
 import java.time.LocalDate
@@ -21,7 +21,7 @@ private suspend fun KeisClient.fetchTimetable(
     classNumber: Int?,
     major: String?
 ): List<Timetable> {
-    return requestRows<TimetableDto>(schoolType.endpoint) {
+    return requestRows<TimetableDTO>(schoolType.endpoint) {
         parameter("ATPT_OFCDC_SC_CODE", officeCode)
         parameter("SD_SCHUL_CODE", schoolCode)
         parameter("TI_FROM_YMD", dateFormat.format(from))

@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 import java.time.LocalDate
 
 @Serializable
-data class TimetableDto(
+data class TimetableDTO(
     @SerialName("ATPT_OFCDC_SC_CODE")
     val officeCode: String,
 

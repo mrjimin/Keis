@@ -2,7 +2,7 @@ package com.github.mrjimin.keis.api
 
 import com.github.mrjimin.keis.KeisClient
 import com.github.mrjimin.keis.api.context.SchoolContext
-import com.github.mrjimin.keis.model.dto.SchoolDto
+import com.github.mrjimin.keis.model.dto.SchoolDTO
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.model.domain.School
 import io.ktor.client.request.*
@@ -10,7 +10,7 @@ import io.ktor.client.request.*
 private suspend fun KeisClient.fetchSchool(
     block: HttpRequestBuilder.() -> Unit
 ): List<School> {
-    return requestRows<SchoolDto>("schoolInfo", block)
+    return requestRows<SchoolDTO>("schoolInfo", block)
         .map { it.toDomain() }
 }
 
