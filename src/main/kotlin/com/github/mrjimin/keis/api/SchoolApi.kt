@@ -8,23 +8,24 @@ import io.ktor.client.request.*
 
 private suspend fun KeisClient.fetchSchool(
     builder: HttpRequestBuilder.() -> Unit
-): List<SchoolDto> {
-    return requestRows("schoolInfo", builder)
+): List<School> {
+    return requestRows<SchoolDto>("schoolInfo", builder)
+        .map { it.toDomain() }
 }
 
-suspend fun KeisClient.school(schoolName: String): List<School> {
+suspend fun KeisClient.schools(schoolName: String): List<School> {
     return fetchSchool {
         parameter("SCHUL_NM", schoolName)
-    }.map { it.toDomain() }
+    }
 }
 
-suspend fun KeisClient.schoolOne(schoolName: String): School? {
-    return school(schoolName).firstOrNull()
+suspend fun KeisClient.school(schoolName: String): School? {
+    return schools(schoolName).firstOrNull()
 }
 
 suspend fun KeisClient.schoolByCode(educationOffice: EducationOffice, schoolCode: Int): School? {
     return fetchSchool {
         parameter("ATPT_OFCDC_SC_CODE", educationOffice.code)
         parameter("SD_SCHUL_CODE", schoolCode)
-    }.map { it.toDomain() }.firstOrNull()
+    }.firstOrNull()
 }
