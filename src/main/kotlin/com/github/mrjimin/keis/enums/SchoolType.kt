@@ -1,11 +1,11 @@
 package com.github.mrjimin.keis.enums
 
-enum class SchoolType(val text: String, val endpoint: String) {
-    UNKNOWN("알수없음", "unknown"),
-    ELEMENTARY("초등학교", "elsTimetable"),
-    MIDDLE("중학교", "misTimetable"),
-    HIGH("고등학교", "hisTimetable"),
-    SPECIAL("특수학교", "spsTimetable");
+enum class SchoolType(val text: String, val endpoint: String, val defaultMaxPeriod: Int) {
+    UNKNOWN("알수없음", "unknown", 0),
+    ELEMENTARY("초등학교", "elsTimetable", 6),
+    MIDDLE("중학교", "misTimetable", 7),
+    HIGH("고등학교", "hisTimetable", 7),
+    SPECIAL("특수학교", "spsTimetable", 7);
 
     companion object {
         private val map = entries.associateBy { it.text }
