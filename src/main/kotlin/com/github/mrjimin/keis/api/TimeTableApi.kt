@@ -17,57 +17,33 @@ private suspend fun KeisClient.fetchTimetable(
     to: LocalDate,
     grade: Int? = null,
     classNumber: Int? = null,
-    major: String? = null,
-    fillMissing: Boolean = false
+    major: String? = null
 ): List<Timetable> {
-
-    val timetables = requestRows<TimetableDto>(schoolType.endpoint) {
+    return requestRows<TimetableDto>(schoolType.endpoint) {
         parameter("ATPT_OFCDC_SC_CODE", officeCode)
         parameter("SD_SCHUL_CODE", schoolCode)
         parameter("TI_FROM_YMD", dateFormat.format(from))
         parameter("TI_TO_YMD", dateFormat.format(to))
+
         grade?.let { parameter("GRADE", it) }
         classNumber?.let { parameter("CLASS_NM", it) }
         major?.let { parameter("DDDEP_NM", it) }
     }.map { it.toDomain() }
-
-    if (!fillMissing) return timetables
-
-    val maxPeriod = timetables.maxOfOrNull { it.period } ?: return timetables
-    return (1..maxPeriod).mapNotNull { period ->
-        val found = timetables.find { it.period == period }
-
-        (found ?: timetables.lastOrNull()?.copy(period = period))?.copy(
-            order = found?.order,
-            major = found?.major,
-            content = found?.content
-        )
-    }
 }
 
-//private suspend fun KeisClient.fetchTimetable(
-//    officeCode: String,
-//    schoolCode: String,
-//    schoolType: SchoolType,
-//    from: LocalDate,
-//    to: LocalDate,
-//    grade: Int? = null,
-//    classNumber: Int? = null,
-//    major: String? = null
-//): List<Timetable> {
-//    val dto = requestRows<TimetableDto>(schoolType.endpoint) {
-//        parameter("ATPT_OFCDC_SC_CODE", officeCode)
-//        parameter("SD_SCHUL_CODE", schoolCode)
-//        parameter("TI_FROM_YMD", dateFormat.format(from))
-//        parameter("TI_TO_YMD", dateFormat.format(to))
-//
-//        grade?.let { parameter("GRADE", it) }
-//        classNumber?.let { parameter("CLASS_NM", it) }
-//        major?.let { parameter("DDDEP_NM", it) }
-//    }
-//
-//    return dto.map { it.toDomain() }
-//}
+private fun List<Timetable>.fillMissing(maxPeriod: Int): List<Timetable> {
+    if (isEmpty()) return emptyList()
+
+    return groupBy { it.date }
+        .flatMap { (_, dayList) ->
+            val map = dayList.associateBy { it.period }
+            val template = dayList.first()
+
+            (1..maxPeriod).map { period ->
+                map[period] ?: template.toEmpty(period)
+            }
+        }
+}
 
 suspend fun KeisClient.timetable(
     officeCode: String,
@@ -78,9 +54,22 @@ suspend fun KeisClient.timetable(
     grade: Int? = null,
     classNumber: Int? = null,
     major: String? = null,
-    fillMissing: Boolean = false
+    fillMissing: Boolean = false,
+    maxPeriod: Int = schoolType.defaultMaxPeriod
 ): List<Timetable> {
-    return fetchTimetable(officeCode, schoolCode, schoolType, from, to, grade, classNumber, major, fillMissing)
+
+    val result = fetchTimetable(
+        officeCode,
+        schoolCode,
+        schoolType,
+        from,
+        to,
+        grade,
+        classNumber,
+        major
+    )
+
+    return if (fillMissing) result.fillMissing(maxPeriod) else result
 }
 
 suspend fun KeisClient.timetableBySchool(
@@ -90,9 +79,11 @@ suspend fun KeisClient.timetableBySchool(
     grade: Int? = null,
     classNumber: Int? = null,
     major: String? = null,
-    fillMissing: Boolean = false
+    fillMissing: Boolean = false,
+    maxPeriod: Int = school.type.defaultMaxPeriod
 ): List<Timetable> {
-    return fetchTimetable(
+
+    val result = fetchTimetable(
         school.office.code,
         school.code,
         school.type,
@@ -100,7 +91,18 @@ suspend fun KeisClient.timetableBySchool(
         to,
         grade,
         classNumber,
-        major,
-        fillMissing
+        major
+    )
+
+    return if (fillMissing) result.fillMissing(maxPeriod) else result
+}
+
+private fun Timetable.toEmpty(period: Int): Timetable {
+    return copy(
+        period = period,
+        order = null,
+        major = null,
+        classroom = null,
+        content = null
     )
 }
