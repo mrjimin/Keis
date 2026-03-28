@@ -7,6 +7,7 @@ import com.github.mrjimin.keis.internal.*
 import com.github.mrjimin.keis.model.domain.School
 import com.github.mrjimin.keis.model.domain.Timetable
 import com.github.mrjimin.keis.model.dto.TimetableDto
+import com.github.mrjimin.keis.model.query.TimetableQuery
 import io.ktor.client.request.*
 import java.time.LocalDate
 
@@ -32,82 +33,9 @@ private suspend fun KeisClient.fetchTimetable(
     }.map { it.toDomain() }
 }
 
-suspend fun KeisClient.timetable(
-    officeCode: String,
-    schoolCode: String,
-    schoolType: SchoolType,
-    from: LocalDate = startOfWeek(),
-    to: LocalDate = endOfWeek(),
-    grade: Int? = null,
-    classNumber: Int? = null,
-    major: String? = null,
-    fillMissing: Boolean = false,
-    maxPeriod: Int = schoolType.defaultMaxPeriod
+private suspend fun KeisClient.executeTimetable(
+    query: TimetableQuery
 ): List<Timetable> {
-
-    val result = fetchTimetable(
-        officeCode,
-        schoolCode,
-        schoolType,
-        from,
-        to,
-        grade,
-        classNumber,
-        major
-    )
-
-    return if (fillMissing) result.fillMissing(maxPeriod) else result
-}
-
-suspend fun KeisClient.timetableBySchool(
-    school: School,
-    from: LocalDate = startOfWeek(),
-    to: LocalDate = endOfWeek(),
-    grade: Int? = null,
-    classNumber: Int? = null,
-    major: String? = null,
-    fillMissing: Boolean = false,
-    maxPeriod: Int = school.type.defaultMaxPeriod
-): List<Timetable> {
-
-    val result = fetchTimetable(
-        school.office.code,
-        school.code,
-        school.type,
-        from,
-        to,
-        grade,
-        classNumber,
-        major
-    )
-
-    return if (fillMissing) result.fillMissing(maxPeriod) else result
-}
-
-suspend fun KeisClient.timetable(
-    school: School,
-    builder: TimetableQueryBuilder.() -> Unit = {}
-): List<Timetable> {
-    return timetable(
-        school.office.code,
-        school.code,
-        school.type,
-        builder
-    )
-}
-
-suspend fun KeisClient.timetable(
-    officeCode: String,
-    schoolCode: String,
-    schoolType: SchoolType,
-    builder: TimetableQueryBuilder.() -> Unit = {}
-): List<Timetable> {
-
-    val query = TimetableQueryBuilder(
-        officeCode,
-        schoolCode,
-        schoolType
-    ).apply(builder).build()
 
     val result = fetchTimetable(
         query.officeCode,
@@ -120,7 +48,64 @@ suspend fun KeisClient.timetable(
         query.major
     )
 
-    return if (query.fillMissing) result.fillMissing(query.maxPeriod) else result
+    return if (query.fillMissing) {
+        result.fillMissing(query.maxPeriod)
+    } else result
+}
+
+suspend fun KeisClient.timetable(
+    school: School,
+    block: TimetableQueryBuilder.() -> Unit = {}
+): List<Timetable> {
+    return timetable(
+        school.office.code,
+        school.code,
+        school.type,
+        block
+    )
+}
+
+suspend fun KeisClient.timetable(
+    officeCode: String,
+    schoolCode: String,
+    schoolType: SchoolType,
+    block: TimetableQueryBuilder.() -> Unit = {}
+): List<Timetable> {
+
+    val query = TimetableQueryBuilder(
+        officeCode,
+        schoolCode,
+        schoolType
+    ).apply(block).build()
+
+    return executeTimetable(query)
+}
+
+suspend fun KeisClient.timetable(
+    school: School,
+    from: LocalDate = startOfWeek(),
+    to: LocalDate = endOfWeek(),
+    grade: Int? = null,
+    classNumber: Int? = null,
+    major: String? = null,
+    fillMissing: Boolean = false,
+    maxPeriod: Int = school.type.defaultMaxPeriod
+): List<Timetable> {
+
+    return executeTimetable(
+        TimetableQuery(
+            officeCode = school.office.code,
+            schoolCode = school.code,
+            schoolType = school.type,
+            from = from,
+            to = to,
+            grade = grade,
+            classNumber = classNumber,
+            major = major,
+            fillMissing = fillMissing,
+            maxPeriod = maxPeriod
+        )
+    )
 }
 
 private fun List<Timetable>.fillMissing(maxPeriod: Int): List<Timetable> {

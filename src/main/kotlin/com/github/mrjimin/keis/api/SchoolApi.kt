@@ -1,15 +1,16 @@
 package com.github.mrjimin.keis.api
 
 import com.github.mrjimin.keis.KeisClient
+import com.github.mrjimin.keis.api.context.SchoolContext
 import com.github.mrjimin.keis.model.dto.SchoolDto
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.model.domain.School
 import io.ktor.client.request.*
 
 private suspend fun KeisClient.fetchSchool(
-    builder: HttpRequestBuilder.() -> Unit
+    block: HttpRequestBuilder.() -> Unit
 ): List<School> {
-    return requestRows<SchoolDto>("schoolInfo", builder)
+    return requestRows<SchoolDto>("schoolInfo", block)
         .map { it.toDomain() }
 }
 
@@ -28,4 +29,9 @@ suspend fun KeisClient.schoolByCode(educationOffice: EducationOffice, schoolCode
         parameter("ATPT_OFCDC_SC_CODE", educationOffice.code)
         parameter("SD_SCHUL_CODE", schoolCode)
     }.firstOrNull()
+}
+
+suspend fun KeisClient.schoolContext(name: String): SchoolContext? {
+    val school = school(name) ?: return null
+    return SchoolContext(this, school)
 }
