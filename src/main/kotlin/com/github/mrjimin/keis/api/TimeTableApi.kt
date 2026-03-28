@@ -1,6 +1,7 @@
 package com.github.mrjimin.keis.api
 
 import com.github.mrjimin.keis.KeisClient
+import com.github.mrjimin.keis.api.dsl.TimetableQueryBuilder
 import com.github.mrjimin.keis.enums.SchoolType
 import com.github.mrjimin.keis.internal.*
 import com.github.mrjimin.keis.model.domain.School
@@ -30,6 +31,7 @@ private suspend fun KeisClient.fetchTimetable(
         major?.let { parameter("DDDEP_NM", it) }
     }.map { it.toDomain() }
 }
+
 suspend fun KeisClient.timetable(
     officeCode: String,
     schoolCode: String,
@@ -80,6 +82,45 @@ suspend fun KeisClient.timetableBySchool(
     )
 
     return if (fillMissing) result.fillMissing(maxPeriod) else result
+}
+
+suspend fun KeisClient.timetable(
+    school: School,
+    builder: TimetableQueryBuilder.() -> Unit = {}
+): List<Timetable> {
+    return timetable(
+        school.office.code,
+        school.code,
+        school.type,
+        builder
+    )
+}
+
+suspend fun KeisClient.timetable(
+    officeCode: String,
+    schoolCode: String,
+    schoolType: SchoolType,
+    builder: TimetableQueryBuilder.() -> Unit = {}
+): List<Timetable> {
+
+    val query = TimetableQueryBuilder(
+        officeCode,
+        schoolCode,
+        schoolType
+    ).apply(builder).build()
+
+    val result = fetchTimetable(
+        query.officeCode,
+        query.schoolCode,
+        query.schoolType,
+        query.from,
+        query.to,
+        query.grade,
+        query.classNumber,
+        query.major
+    )
+
+    return if (query.fillMissing) result.fillMissing(query.maxPeriod) else result
 }
 
 private fun List<Timetable>.fillMissing(maxPeriod: Int): List<Timetable> {
