@@ -10,8 +10,8 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 
 class KeisClient(
-    private val config: KeisConfig,
-    private val httpClient: HttpClient = defaultClient,
+    val config: KeisConfig,
+    val httpClient: HttpClient = defaultClient,
 ) {
 
     constructor(key: String) : this(KeisConfig(key))
