@@ -3,8 +3,10 @@
 Kotlin + Ktor 기반 NEIS(교육청) API 클라이언트 라이브러리
 
 [![](https://jitpack.io/v/mrjimin/Keis.svg)](https://jitpack.io/#mrjimin/Keis)
-![GitHub License](https://img.shields.io/github/license/mrjimin/Keis?style=flat-square)
+[![GitHub License](https://img.shields.io/github/license/mrjimin/Keis?style=flat-square)](LICENSE)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.3.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Ktor](https://img.shields.io/badge/ktor-3.4.1-087CFA.svg?logo=ktor)](https://ktor.io/)
+[![DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/mrjimin/Keis)
 
 ---
 
