@@ -33,3 +33,6 @@ fun startOfWeek(): LocalDate =
 
 fun endOfWeek(): LocalDate =
     LocalDate.now(zone).with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY))
+
+fun String.toLocalDate(): LocalDate =
+    LocalDate.from(dateFormat.parse(this))
