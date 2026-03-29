@@ -2,9 +2,9 @@ package com.github.mrjimin.keis.api
 
 import com.github.mrjimin.keis.KeisClient
 import com.github.mrjimin.keis.api.context.SchoolContext
-import com.github.mrjimin.keis.model.dto.SchoolDTO
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.model.domain.School
+import com.github.mrjimin.keis.model.dto.SchoolDTO
 import io.ktor.client.request.*
 
 private suspend fun KeisClient.fetchSchool(

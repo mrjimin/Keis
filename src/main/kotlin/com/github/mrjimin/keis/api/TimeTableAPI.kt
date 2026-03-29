@@ -2,13 +2,13 @@ package com.github.mrjimin.keis.api
 
 import com.github.mrjimin.keis.KeisClient
 import com.github.mrjimin.keis.api.dsl.builder.TimetableQueryBuilder
+import com.github.mrjimin.keis.api.dsl.query.TimetableQuery
+import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolType
-import com.github.mrjimin.keis.internal.*
+import com.github.mrjimin.keis.internal.dateFormat
 import com.github.mrjimin.keis.model.domain.School
 import com.github.mrjimin.keis.model.domain.Timetable
 import com.github.mrjimin.keis.model.dto.TimetableDTO
-import com.github.mrjimin.keis.api.dsl.query.TimetableQuery
-import com.github.mrjimin.keis.enums.EducationOffice
 import io.ktor.client.request.*
 import java.time.LocalDate
 

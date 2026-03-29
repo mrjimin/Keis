@@ -1,6 +1,7 @@
 package com.github.mrjimin.keis
 
-import com.github.mrjimin.keis.internal.*
+import com.github.mrjimin.keis.internal.defaultClient
+import com.github.mrjimin.keis.internal.json
 import com.github.mrjimin.keis.internal.model.KeisWrapper
 import io.ktor.client.*
 import io.ktor.client.call.*

@@ -1,10 +1,11 @@
 package com.github.mrjimin.keis.api.dsl.builder
 
 import com.github.mrjimin.keis.api.dsl.KeisDsl
-import com.github.mrjimin.keis.enums.SchoolType
-import com.github.mrjimin.keis.internal.*
 import com.github.mrjimin.keis.api.dsl.query.TimetableQuery
 import com.github.mrjimin.keis.enums.EducationOffice
+import com.github.mrjimin.keis.enums.SchoolType
+import com.github.mrjimin.keis.internal.endOfWeek
+import com.github.mrjimin.keis.internal.startOfWeek
 import java.time.LocalDate
 
 @KeisDsl

@@ -4,7 +4,8 @@ import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.MealType
 import com.github.mrjimin.keis.internal.toLocalDate
 import com.github.mrjimin.keis.model.domain.Meal
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class MealDTO(

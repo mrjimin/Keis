@@ -1,9 +1,9 @@
 package com.github.mrjimin.keis.example
 
 import com.github.mrjimin.keis.KeisClient
+import com.github.mrjimin.keis.api.school
 import com.github.mrjimin.keis.api.schoolContext
 import com.github.mrjimin.keis.api.schools
-import com.github.mrjimin.keis.api.school
 
 suspend fun main() {
     val client = KeisClient("YOUR_API_KEY")
