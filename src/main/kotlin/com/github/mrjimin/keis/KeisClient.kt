@@ -34,7 +34,7 @@ class KeisClient(
             accept(ContentType.Any)
 
             parameter("KEY", config.key)
-            parameter("Type", config.type.value)
+            parameter("Type", "json")
             parameter("pIndex", config.pIndex)
             parameter("pSize", config.pSize)
 
