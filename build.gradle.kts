@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.github.mrjimin.keis"
-version = "0.0.21"
+version = "0.0.3"
 
 application {
     mainClass = "com.github.mrjimin.keis.MainKt"

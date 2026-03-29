@@ -5,6 +5,17 @@
 포맷은 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)을 기반으로 하며,  
 이 프로젝트는 [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 규칙을 따릅니다.
 
+## 0.0.3 – 2026-03-29
+
+### 추가
+- `meal` 기능 출시
+
+### 개선
+- 내부 구조 리팩터링
+- 성능 최적화
+
+---
+
 ## 0.0.21 – 2026-03-29
 
 ### 개선

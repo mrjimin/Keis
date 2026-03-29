@@ -16,6 +16,8 @@ Kotlin + Ktor 기반 NEIS(교육청) API 클라이언트 라이브러리
 * 간단한 Client 호출
 * DTO → Domain 자동 변환
 * Kotlin 친화적 DSL API 설계
+* 시간표 누락 교시 자동 채우기
+* 날짜/학년/반/급식 타입 등 편리한 조회
 
 ---
 
@@ -27,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.mrjimin:Keis:0.0.21")
+    implementation("com.github.mrjimin:Keis:0.0.3")
 }
 ```
 
@@ -36,13 +38,22 @@ dependencies {
 ## 🚀 Quick Start
 ```kotlin
 val client = KeisClient("YOUR_API_KEY")
+val context = client.schoolContext("우석고") ?: return
 
-val school = client.school("우석고") // 우석고등학교
-val timetable = school?.let {
-    client.timetableBySchool(it, fillMissing = true)
+// 시간표 조회
+val timetable = context.timetable {
+  grade(2)
+  classNumber(3)
+  fillMissing()
 }
 
 println(timetable)
+
+// 급식 조회
+val meals = context.meal(MealType.LUNCH) {
+  date(LocalDate.now())
+}
+println(meals)
 ```
 
 ---
@@ -50,14 +61,25 @@ println(timetable)
 ## 📚 API
 ### [School](example/src/main/kotlin/com/github/mrjimin/keis/example/SchoolExample.kt)
 ```kotlin
-client.schools(name: String): List<School>
-client.school(name: String): School?
-client.schoolByCode(educationOffice: EducationOffice, schoolCode: Int): School?
+client.school(string): School?
 ```
 ### [Timetable](example/src/main/kotlin/com/github/mrjimin/keis/example/TimetableExample.kt)
 ```kotlin
-client.timetable(...): List<Timetable>
-client.timetable(...) {}: List<Timetable>
+context.timetable {
+  grade(1)
+  classNumber(2)
+  fillMissing()
+  dateRange(from, to)
+}
+```
+### [Meal](example/src/main/kotlin/com/github/mrjimin/keis/example/MealExample.kt)
+```kotlin
+context.meal(MealType.LUNCH) {
+  date(LocalDate.now())
+}
+context.meal(MealType.ALL) {
+  thisWeek()
+}
 ```
 
 ---
