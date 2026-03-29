@@ -1,8 +1,12 @@
 package com.github.mrjimin.keis.api.context
 
 import com.github.mrjimin.keis.KeisClient
+import com.github.mrjimin.keis.api.dsl.builder.MealQueryBuilder
 import com.github.mrjimin.keis.api.dsl.builder.TimetableQueryBuilder
+import com.github.mrjimin.keis.api.meal
 import com.github.mrjimin.keis.api.timetable
+import com.github.mrjimin.keis.enums.MealType
+import com.github.mrjimin.keis.model.domain.Meal
 import com.github.mrjimin.keis.model.domain.School
 import com.github.mrjimin.keis.model.domain.Timetable
 
@@ -15,6 +19,13 @@ class SchoolContext(
         block: TimetableQueryBuilder.() -> Unit = {}
     ): List<Timetable> {
         return client.timetable(school, block)
+    }
+
+    suspend fun meal(
+        mealType: MealType = MealType.ALL,
+        block: MealQueryBuilder.() -> Unit = {}
+    ): List<Meal> {
+        return client.meal(school, mealType, block)
     }
 
 }
