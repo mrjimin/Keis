@@ -66,18 +66,16 @@ class TimetableQueryBuilder(
         this.maxPeriod = range.last
     }
 
-    fun build(): TimetableQuery {
-        return TimetableQuery(
-            office,
-            schoolCode,
-            schoolType,
-            from,
-            to,
-            grade,
-            classNumber,
-            major,
-            fillMissing,
-            maxPeriod ?: schoolType.defaultMaxPeriod
-        )
-    }
+    fun build(): TimetableQuery = TimetableQuery(
+        office,
+        schoolCode,
+        schoolType,
+        from,
+        to,
+        grade,
+        classNumber,
+        major,
+        fillMissing,
+        maxPeriod ?: schoolType.defaultMaxPeriod
+    )
 }

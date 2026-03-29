@@ -66,12 +66,15 @@ private suspend fun KeisClient.executeTimetable(query: TimetableQuery): List<Tim
 
 private fun List<Timetable>.fillMissing(maxPeriod: Int): List<Timetable> {
     if (isEmpty()) return emptyList()
-    return groupBy { it.date }
+
+    return this.groupBy { it.date }
         .flatMap { (_, dayList) ->
-            val map = dayList.associateBy { it.period }
+            val periodMap = dayList.associateBy { it.period }
             val template = dayList.first()
-            (1..maxPeriod).map { period ->
-                map.getOrElse(period) { template.toEmpty(period) }
+            buildList {
+                for (period in 1..maxPeriod) {
+                    add(periodMap[period] ?: template.toEmpty(period))
+                }
             }
         }
 }
