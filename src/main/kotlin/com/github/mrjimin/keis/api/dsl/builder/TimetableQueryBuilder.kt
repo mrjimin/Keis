@@ -1,13 +1,15 @@
-package com.github.mrjimin.keis.api.dsl
+package com.github.mrjimin.keis.api.dsl.builder
 
+import com.github.mrjimin.keis.api.dsl.KeisDsl
 import com.github.mrjimin.keis.enums.SchoolType
 import com.github.mrjimin.keis.internal.*
-import com.github.mrjimin.keis.model.query.TimetableQuery
+import com.github.mrjimin.keis.api.dsl.query.TimetableQuery
+import com.github.mrjimin.keis.enums.EducationOffice
 import java.time.LocalDate
 
 @KeisDsl
 class TimetableQueryBuilder(
-    private val officeCode: String,
+    private val office: EducationOffice,
     private val schoolCode: String,
     private val schoolType: SchoolType
 ) {
@@ -66,7 +68,7 @@ class TimetableQueryBuilder(
 
     fun build(): TimetableQuery {
         return TimetableQuery(
-            officeCode,
+            office,
             schoolCode,
             schoolType,
             from,

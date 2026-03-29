@@ -1,11 +1,10 @@
 package com.github.mrjimin.keis.model.dto
 
 import com.github.mrjimin.keis.enums.EducationOffice
-import com.github.mrjimin.keis.internal.dateFormat
+import com.github.mrjimin.keis.internal.toLocalDate
 import com.github.mrjimin.keis.model.domain.Timetable
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.time.LocalDate
 
 @Serializable
 data class TimetableDTO(
@@ -37,7 +36,7 @@ data class TimetableDTO(
     val semester: Int,
 
     @SerialName("ALL_TI_YMD")
-    private val dateText: String,
+    val dateText: String,
 
     @SerialName("ORD_SC_NM")
     val order: String? = null,
@@ -61,7 +60,7 @@ data class TimetableDTO(
         period,
         year,
         semester,
-        LocalDate.from(dateFormat.parse(dateText)),
+        dateText.toLocalDate(),
         order,
         major,
         classroom,

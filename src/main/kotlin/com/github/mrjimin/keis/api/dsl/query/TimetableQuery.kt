@@ -1,10 +1,11 @@
-package com.github.mrjimin.keis.model.query
+package com.github.mrjimin.keis.api.dsl.query
 
+import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolType
 import java.time.LocalDate
 
 data class TimetableQuery(
-    val officeCode: String,
+    val office: EducationOffice,
     val schoolCode: String,
     val schoolType: SchoolType,
     val from: LocalDate,
