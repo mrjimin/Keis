@@ -2,36 +2,76 @@ package com.github.mrjimin.keis.api
 
 import com.github.mrjimin.keis.KeisClient
 import com.github.mrjimin.keis.api.context.SchoolContext
+import com.github.mrjimin.keis.api.dsl.builder.SchoolQueryBuilder
+import com.github.mrjimin.keis.api.dsl.query.SchoolQuery
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.model.domain.School
 import com.github.mrjimin.keis.model.dto.SchoolDTO
 import io.ktor.client.request.*
 
-private suspend fun KeisClient.fetchSchool(
-    block: HttpRequestBuilder.() -> Unit
-): List<School> {
-    return requestRows<SchoolDTO>("schoolInfo", block)
-        .map { it.toDomain() }
-}
+suspend fun KeisClient.schools(name: String): List<School> =
+    schools { name(name) }
 
-suspend fun KeisClient.schools(schoolName: String): List<School> {
-    return fetchSchool {
-        parameter("SCHUL_NM", schoolName)
+suspend fun KeisClient.school(name: String): School? =
+    school { name(name) }
+
+suspend fun KeisClient.schools(
+    office: EducationOffice,
+    name: String
+): List<School> =
+    schools {
+        office(office)
+        name(name)
     }
+
+suspend fun KeisClient.school(
+    office: EducationOffice,
+    schoolCode: Int
+): School? =
+    school {
+        office(office)
+        code(schoolCode)
+    }
+
+suspend fun KeisClient.schools(
+    block: SchoolQueryBuilder.() -> Unit = {}
+): List<School> {
+    val query = SchoolQueryBuilder()
+        .apply(block)
+        .build()
+
+    return fetchSchool(query)
 }
 
-suspend fun KeisClient.school(schoolName: String): School? {
-    return schools(schoolName).firstOrNull()
-}
+suspend fun KeisClient.school(
+    block: SchoolQueryBuilder.() -> Unit = {}
+): School? =
+    schools(block).firstOrNull()
 
-suspend fun KeisClient.schoolByCode(educationOffice: EducationOffice, schoolCode: Int): School? {
-    return fetchSchool {
-        parameter("ATPT_OFCDC_SC_CODE", educationOffice.code)
-        parameter("SD_SCHUL_CODE", schoolCode)
-    }.firstOrNull()
-}
+suspend fun KeisClient.schoolContext(
+    name: String
+): SchoolContext? =
+    schoolContext { name(name) }
 
-suspend fun KeisClient.schoolContext(name: String): SchoolContext? {
-    val school = school(name) ?: return null
+suspend fun KeisClient.schoolContext(
+    block: SchoolQueryBuilder.() -> Unit = {}
+): SchoolContext? {
+    val school = school(block) ?: return null
     return SchoolContext(this, school)
+}
+
+private suspend fun KeisClient.fetchSchool(
+    query: SchoolQuery,
+    block: HttpRequestBuilder.() -> Unit = {}
+): List<School> {
+    return requestRows<SchoolDTO>("schoolInfo") {
+        query.applyTo(this)
+        block()
+    }.map { it.toDomain() }
+}
+
+private fun SchoolQuery.applyTo(builder: HttpRequestBuilder) {
+    office?.let { builder.parameter("ATPT_OFCDC_SC_CODE", it.code) }
+    schoolName?.let { builder.parameter("SCHUL_NM", it) }
+    schoolCode?.let { builder.parameter("SD_SCHUL_CODE", it) }
 }

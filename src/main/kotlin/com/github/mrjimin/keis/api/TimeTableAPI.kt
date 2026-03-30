@@ -5,62 +5,60 @@ import com.github.mrjimin.keis.api.dsl.builder.TimetableQueryBuilder
 import com.github.mrjimin.keis.api.dsl.query.TimetableQuery
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolType
-import com.github.mrjimin.keis.internal.dateFormat
+import com.github.mrjimin.keis.internal.toYmd
 import com.github.mrjimin.keis.model.domain.School
 import com.github.mrjimin.keis.model.domain.Timetable
 import com.github.mrjimin.keis.model.dto.TimetableDTO
 import io.ktor.client.request.*
-import java.time.LocalDate
 
-private suspend fun KeisClient.fetchTimetable(
+suspend fun KeisClient.timetable(
     office: EducationOffice,
-    schoolCode: String,
+    schoolCode: Int,
+    schoolType: SchoolType
+): List<Timetable> =
+    executeTimetable(
+        TimetableQueryBuilder(office, schoolCode, schoolType).build()
+    )
+
+suspend fun KeisClient.timetable(
+    school: School
+): List<Timetable> =
+    timetable(school.office, school.code, school.type)
+
+suspend fun KeisClient.timetable(
+    office: EducationOffice,
+    schoolCode: Int,
     schoolType: SchoolType,
-    from: LocalDate,
-    to: LocalDate,
-    grade: Int?,
-    classNumber: Int?,
-    major: String?
+    block: TimetableQueryBuilder.() -> Unit = {}
 ): List<Timetable> {
-    return requestRows<TimetableDTO>(schoolType.endpoint) {
-        parameter("ATPT_OFCDC_SC_CODE", office.code)
-        parameter("SD_SCHUL_CODE", schoolCode)
-        parameter("TI_FROM_YMD", dateFormat.format(from))
-        parameter("TI_TO_YMD", dateFormat.format(to))
-        grade?.let { parameter("GRADE", it) }
-        classNumber?.let { parameter("CLASS_NM", it) }
-        major?.let { parameter("DDDEP_NM", it) }
-    }.map { it.toDomain() }
+    val query = TimetableQueryBuilder(office, schoolCode, schoolType)
+        .apply(block)
+        .build()
+
+    return executeTimetable(query)
 }
 
 suspend fun KeisClient.timetable(
     school: School,
     block: TimetableQueryBuilder.() -> Unit = {}
+): List<Timetable> =
+    timetable(school.office, school.code, school.type, block)
+
+private suspend fun KeisClient.fetchTimetable(
+    query: TimetableQuery,
+    block: HttpRequestBuilder.() -> Unit = {}
 ): List<Timetable> {
-    return timetable(school.office, school.code, school.type, block)
+    return requestRows<TimetableDTO>(query.schoolType.endpoint) {
+        query.applyTo(this)
+        block()
+    }.map { it.toDomain() }
 }
 
-suspend fun KeisClient.timetable(
-    office: EducationOffice,
-    schoolCode: String,
-    schoolType: SchoolType,
-    block: TimetableQueryBuilder.() -> Unit = {}
+private suspend fun KeisClient.executeTimetable(
+    query: TimetableQuery,
+    block: HttpRequestBuilder.() -> Unit = {}
 ): List<Timetable> {
-    val query = TimetableQueryBuilder(office, schoolCode, schoolType).apply(block).build()
-    return executeTimetable(query)
-}
-
-private suspend fun KeisClient.executeTimetable(query: TimetableQuery): List<Timetable> {
-    val result = fetchTimetable(
-        query.office,
-        query.schoolCode,
-        query.schoolType,
-        query.from,
-        query.to,
-        query.grade,
-        query.classNumber,
-        query.major
-    )
+    val result = fetchTimetable(query, block)
     return if (query.fillMissing) result.fillMissing(query.maxPeriod) else result
 }
 
@@ -87,4 +85,16 @@ private fun Timetable.toEmpty(period: Int): Timetable {
         classroom = null,
         content = null
     )
+}
+
+private fun TimetableQuery.applyTo(builder: HttpRequestBuilder) {
+    builder.parameter("ATPT_OFCDC_SC_CODE", office.code)
+    builder.parameter("SD_SCHUL_CODE", schoolCode)
+
+    builder.parameter("TI_FROM_YMD", from.toYmd())
+    builder.parameter("TI_TO_YMD", to.toYmd())
+
+    grade?.let { builder.parameter("GRADE", it) }
+    classNumber?.let { builder.parameter("CLASS_NM", it) }
+    major?.let { builder.parameter("DDDEP_NM", it) }
 }
