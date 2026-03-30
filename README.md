@@ -29,14 +29,15 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.mrjimin:Keis:0.0.3")
+    implementation("com.github.mrjimin:Keis:1.0.0")
 }
 ```
 
 ---
 
 ## 🚀 Quick Start
-```kotlinsuspend fun main() {
+```kotlin
+suspend fun main() {
     val client = KeisClient("YOUR_API_KEY")
 
     // 학교 컨텍스트 생성
