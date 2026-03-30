@@ -12,12 +12,12 @@ Kotlin + Ktor 기반 NEIS(교육청) API 클라이언트 라이브러리
 
 ## ✨ Features
 
-* 코루틴 기반 비동기 API
-* 간단한 Client 호출
-* DTO → Domain 자동 변환
-* Kotlin 친화적 DSL API 설계
-* 시간표 누락 교시 자동 채우기
-* 날짜/학년/반/급식 타입 등 편리한 조회
+- 코루틴 기반 비동기 API
+- 간단한 Client 호출 구조
+- DTO → Domain 자동 변환
+- Kotlin 친화적 DSL API 설계
+- 시간표 누락 교시 자동 채우기
+- 날짜 / 학년 / 반 / 급식 타입 등 다양한 조회 지원
 
 ---
 
@@ -36,34 +36,41 @@ dependencies {
 ---
 
 ## 🚀 Quick Start
-```kotlin
-val client = KeisClient("YOUR_API_KEY")
-val context = client.schoolContext("우석고") ?: return
+```kotlinsuspend fun main() {
+    val client = KeisClient("YOUR_API_KEY")
 
-// 시간표 조회
-val timetable = context.timetable {
-  grade(2)
-  classNumber(3)
-  fillMissing()
+    // 학교 컨텍스트 생성
+    val context = client.schoolContext("우석고") ?: return
+
+    // Meal
+    val lunch = context.meal(MealType.LUNCH) {
+        today()
+    }
+
+    // Timetable
+    val timetable = context.timetable {
+        grade(2)
+        classNumber(3)
+        fillMissing(true)
+    }
+    
+    // Schedule
+    val schedules = context.schedule()
+
 }
-
-println(timetable)
-
-// 급식 조회
-val meals = context.meal(MealType.LUNCH) {
-  date(LocalDate.now())
-}
-println(meals)
 ```
+👉 자세한 사용법은 아래 API 또는 Example을 참고하세요.
 
 ---
 
 ## 📚 API
-### [School](example/src/main/kotlin/com/github/mrjimin/keis/example/SchoolExample.kt)
+### 🏫 [School](example/src/main/kotlin/com/github/mrjimin/keis/example/SchoolExample.kt)
 ```kotlin
-client.school(string): School?
+client.school("학교명"): School?
+client.schools("학교명"): List<School>
 ```
-### [Timetable](example/src/main/kotlin/com/github/mrjimin/keis/example/TimetableExample.kt)
+
+### 📚 [Timetable](example/src/main/kotlin/com/github/mrjimin/keis/example/TimetableExample.kt)
 ```kotlin
 context.timetable {
   grade(1)
@@ -72,13 +79,25 @@ context.timetable {
   dateRange(from, to)
 }
 ```
-### [Meal](example/src/main/kotlin/com/github/mrjimin/keis/example/MealExample.kt)
+
+### 🍽️ [Meal](example/src/main/kotlin/com/github/mrjimin/keis/example/MealExample.kt)
 ```kotlin
 context.meal(MealType.LUNCH) {
-  date(LocalDate.now())
+  today()
 }
+
 context.meal(MealType.ALL) {
   thisWeek()
+}
+```
+
+### 📅 [Schedule](example/src/main/kotlin/com/github/mrjimin/keis/example/ScheduleExample.kt)
+```kotlin
+context.schedule {
+    today()
+    dateRange(from, to)
+    dayNightCourse(DayNightCourse.DAY)
+    schoolCourse(SchoolCourse.GENERAL)
 }
 ```
 
