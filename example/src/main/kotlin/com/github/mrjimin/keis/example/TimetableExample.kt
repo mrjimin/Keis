@@ -8,23 +8,37 @@ suspend fun main() {
     val client = KeisClient("YOUR_API_KEY")
     val context = client.schoolContext("우석고") ?: return
 
-    // 기본 조회
+    // 기본 시간표 (이번 주)
     val timetable = context.timetable()
 
-    // 누락 교시 채우기
-    val filled = context.timetable {
-        fillMissing()
+    // 오늘 시간표
+    val today = context.timetable {
+        today()
     }
 
-    // 특정 학년/반
+    // 특정 날짜
+    val specific = context.timetable {
+        date(LocalDate.of(2026, 3, 30))
+    }
+
+    // 특정 반 시간표
     val classTimetable = context.timetable {
-        grade(1)
-        classNumber(1)
-        fillMissing()
+        grade(2)
+        classNumber(3)
     }
 
-    // 날짜 범위 지정
-    val range = context.timetable {
-        dateRange(LocalDate.now(), LocalDate.now().plusDays(2))
+    // 빈 교시 채우기
+    val filled = context.timetable {
+        grade(2)
+        classNumber(3)
+        fillMissing(true)
+    }
+
+    // 기간 + 필터
+    val advanced = context.timetable {
+        grade(1)
+        classNumber(2)
+        dateRange(LocalDate.now(), LocalDate.now().plusDays(5))
+        fillMissing(true)
     }
 }
