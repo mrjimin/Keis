@@ -1,9 +1,9 @@
 package com.github.mrjimin.keis.example
 
 import com.github.mrjimin.keis.KeisClient
-import com.github.mrjimin.keis.api.school
-import com.github.mrjimin.keis.api.schoolContext
-import com.github.mrjimin.keis.api.schools
+import com.github.mrjimin.keis.api.school.school
+import com.github.mrjimin.keis.api.school.schoolContext
+import com.github.mrjimin.keis.api.school.schools
 import com.github.mrjimin.keis.enums.EducationOffice
 
 suspend fun main() {

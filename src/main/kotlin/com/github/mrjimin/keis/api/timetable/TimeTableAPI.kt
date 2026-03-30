@@ -1,8 +1,6 @@
-package com.github.mrjimin.keis.api
+package com.github.mrjimin.keis.api.timetable
 
 import com.github.mrjimin.keis.KeisClient
-import com.github.mrjimin.keis.api.dsl.builder.TimetableQueryBuilder
-import com.github.mrjimin.keis.api.dsl.query.TimetableQuery
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolType
 import com.github.mrjimin.keis.model.domain.School

@@ -1,12 +1,12 @@
 package com.github.mrjimin.keis.api.context
 
 import com.github.mrjimin.keis.KeisClient
-import com.github.mrjimin.keis.api.dsl.builder.MealQueryBuilder
-import com.github.mrjimin.keis.api.dsl.builder.ScheduleQueryBuilder
-import com.github.mrjimin.keis.api.dsl.builder.TimetableQueryBuilder
-import com.github.mrjimin.keis.api.meal
-import com.github.mrjimin.keis.api.schedule
-import com.github.mrjimin.keis.api.timetable
+import com.github.mrjimin.keis.api.meal.MealQueryBuilder
+import com.github.mrjimin.keis.api.meal.meal
+import com.github.mrjimin.keis.api.schedule.ScheduleQueryBuilder
+import com.github.mrjimin.keis.api.schedule.schedule
+import com.github.mrjimin.keis.api.timetable.TimetableQueryBuilder
+import com.github.mrjimin.keis.api.timetable.timetable
 import com.github.mrjimin.keis.enums.MealType
 import com.github.mrjimin.keis.model.domain.Meal
 import com.github.mrjimin.keis.model.domain.Schedule

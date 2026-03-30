@@ -1,9 +1,11 @@
-package com.github.mrjimin.keis.api.dsl.query
+package com.github.mrjimin.keis.api.timetable
 
+import com.github.mrjimin.keis.api.dsl.marker.Query
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolType
 import com.github.mrjimin.keis.internal.toYmd
-import io.ktor.client.request.*
+import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.parameter
 import java.time.LocalDate
 
 data class TimetableQuery(
@@ -16,7 +18,10 @@ data class TimetableQuery(
     val classNumber: Int? = null,
     val major: String? = null,
     val fillMissing: Boolean = false,
-    val maxPeriod: Int = schoolType.defaultMaxPeriod
+    val maxPeriod: Int = schoolType.defaultMaxPeriod,
+    override val pIndex: Int,
+    override val pSize: Int,
+    override val stats: Boolean
 ): Query {
     override fun apply(builder: HttpRequestBuilder) {
         builder.parameter("ATPT_OFCDC_SC_CODE", office.code)
@@ -27,5 +32,7 @@ data class TimetableQuery(
         grade?.let { builder.parameter("GRADE", it) }
         classNumber?.let { builder.parameter("CLASS_NM", it) }
         major?.let { builder.parameter("DDDEP_NM", it) }
+
+        builder.applyPaging()
     }
 }

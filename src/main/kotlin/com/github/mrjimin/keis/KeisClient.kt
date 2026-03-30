@@ -35,10 +35,10 @@ class KeisClient(
 
             parameter("KEY", config.key)
             parameter("Type", "json")
-            parameter("pIndex", config.pIndex)
-            parameter("pSize", config.pSize)
+//            parameter("pIndex", config.pIndex)
+//            parameter("pSize", config.pSize)
 
-            if (config.stats) parameter("stats", "true")
+            // if (config.stats) parameter("stats", "true")
 
             block()
         }.body()

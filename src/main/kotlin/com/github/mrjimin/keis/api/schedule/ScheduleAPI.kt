@@ -1,8 +1,6 @@
-package com.github.mrjimin.keis.api
+package com.github.mrjimin.keis.api.schedule
 
 import com.github.mrjimin.keis.KeisClient
-import com.github.mrjimin.keis.api.dsl.builder.ScheduleQueryBuilder
-import com.github.mrjimin.keis.api.dsl.query.ScheduleQuery
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.model.domain.Schedule
 import com.github.mrjimin.keis.model.domain.School

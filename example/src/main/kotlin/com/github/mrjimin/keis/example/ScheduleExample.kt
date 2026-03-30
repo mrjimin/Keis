@@ -1,7 +1,9 @@
 package com.github.mrjimin.keis.example
 
 import com.github.mrjimin.keis.KeisClient
-import com.github.mrjimin.keis.api.schoolContext
+import com.github.mrjimin.keis.api.dsl.marker.dateRange
+import com.github.mrjimin.keis.api.dsl.marker.today
+import com.github.mrjimin.keis.api.school.schoolContext
 import com.github.mrjimin.keis.enums.DayNightCourse
 import com.github.mrjimin.keis.enums.SchoolCourse
 import java.time.LocalDate

@@ -1,7 +1,8 @@
-package com.github.mrjimin.keis.api.dsl.builder
+package com.github.mrjimin.keis.api.timetable
 
 import com.github.mrjimin.keis.api.dsl.KeisDsl
-import com.github.mrjimin.keis.api.dsl.query.TimetableQuery
+import com.github.mrjimin.keis.api.dsl.marker.Builder
+import com.github.mrjimin.keis.api.dsl.marker.DateRange
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolType
 import com.github.mrjimin.keis.internal.endOfWeek
@@ -13,9 +14,13 @@ class TimetableQueryBuilder(
     private val office: EducationOffice,
     private val schoolCode: Int,
     private val schoolType: SchoolType
-): Builder<TimetableQuery> {
-    private var from: LocalDate = startOfWeek()
-    private var to: LocalDate = endOfWeek()
+): Builder<TimetableQuery>, DateRange {
+    override var from: LocalDate = startOfWeek()
+    override var to: LocalDate = endOfWeek()
+    override var pIndex: Int = 1
+    override var pSize: Int = 100
+    override var stats: Boolean = false
+
     private var grade: Int? = null
     private var classNumber: Int? = null
     private var major: String? = null
@@ -32,27 +37,6 @@ class TimetableQueryBuilder(
 
     fun major(value: String) {
         this.major = value
-    }
-
-    fun date(date: LocalDate) {
-        this.from = date
-        this.to = date
-    }
-
-    fun dateRange(from: LocalDate, to: LocalDate) {
-        this.from = from
-        this.to = to
-    }
-
-    fun today() {
-        val now = LocalDate.now()
-        this.from = now
-        this.to = now
-    }
-
-    fun thisWeek() {
-        this.from = startOfWeek()
-        this.to = endOfWeek()
     }
 
     fun fillMissing(enable: Boolean = true) {
@@ -77,6 +61,9 @@ class TimetableQueryBuilder(
         classNumber,
         major,
         fillMissing,
-        maxPeriod ?: schoolType.defaultMaxPeriod
+        maxPeriod ?: schoolType.defaultMaxPeriod,
+        pIndex,
+        pSize,
+        stats,
     )
 }

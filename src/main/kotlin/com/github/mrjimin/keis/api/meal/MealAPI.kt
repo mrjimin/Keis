@@ -1,8 +1,6 @@
-package com.github.mrjimin.keis.api
+package com.github.mrjimin.keis.api.meal
 
 import com.github.mrjimin.keis.KeisClient
-import com.github.mrjimin.keis.api.dsl.builder.MealQueryBuilder
-import com.github.mrjimin.keis.api.dsl.query.MealQuery
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.MealType
 import com.github.mrjimin.keis.model.domain.Meal

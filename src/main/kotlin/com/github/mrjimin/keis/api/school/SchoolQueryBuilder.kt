@@ -1,7 +1,7 @@
-package com.github.mrjimin.keis.api.dsl.builder
+package com.github.mrjimin.keis.api.school
 
 import com.github.mrjimin.keis.api.dsl.KeisDsl
-import com.github.mrjimin.keis.api.dsl.query.SchoolQuery
+import com.github.mrjimin.keis.api.dsl.marker.Builder
 import com.github.mrjimin.keis.enums.EducationOffice
 
 @KeisDsl
@@ -9,6 +9,10 @@ class SchoolQueryBuilder: Builder<SchoolQuery> {
     private var office: EducationOffice? = null
     private var schoolName: String? = null
     private var schoolCode: Int? = null
+
+    override var pIndex: Int = 1
+    override var pSize: Int = 100
+    override var stats: Boolean = false
 
     fun office(office: EducationOffice) {
         this.office = office
@@ -25,6 +29,9 @@ class SchoolQueryBuilder: Builder<SchoolQuery> {
     override fun build(): SchoolQuery = SchoolQuery(
         office,
         schoolName,
-        schoolCode
+        schoolCode,
+        pIndex,
+        pSize,
+        stats
     )
 }

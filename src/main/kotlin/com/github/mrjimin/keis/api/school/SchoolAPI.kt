@@ -1,9 +1,7 @@
-package com.github.mrjimin.keis.api
+package com.github.mrjimin.keis.api.school
 
 import com.github.mrjimin.keis.KeisClient
 import com.github.mrjimin.keis.api.context.SchoolContext
-import com.github.mrjimin.keis.api.dsl.builder.SchoolQueryBuilder
-import com.github.mrjimin.keis.api.dsl.query.SchoolQuery
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.model.domain.School
 import com.github.mrjimin.keis.model.dto.SchoolDTO
