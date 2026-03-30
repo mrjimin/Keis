@@ -11,7 +11,7 @@ import java.time.LocalDate
 @KeisDsl
 class MealQueryBuilder(
     private val office: EducationOffice,
-    private val schoolCode: String,
+    private val schoolCode: Int,
     private val mealType: MealType = MealType.ALL,
 ) {
     private var from: LocalDate = startOfWeek()

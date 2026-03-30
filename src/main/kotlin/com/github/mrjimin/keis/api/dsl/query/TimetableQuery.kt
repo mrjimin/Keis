@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 data class TimetableQuery(
     val office: EducationOffice,
-    val schoolCode: String,
+    val schoolCode: Int,
     val schoolType: SchoolType,
     val from: LocalDate,
     val to: LocalDate,

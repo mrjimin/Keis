@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 data class MealQuery(
     val office: EducationOffice,
-    val schoolCode: String,
+    val schoolCode: Int,
     val mealType: MealType,
     val from: LocalDate,
     val to: LocalDate,

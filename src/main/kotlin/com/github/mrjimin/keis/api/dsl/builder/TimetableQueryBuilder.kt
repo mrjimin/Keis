@@ -11,7 +11,7 @@ import java.time.LocalDate
 @KeisDsl
 class TimetableQueryBuilder(
     private val office: EducationOffice,
-    private val schoolCode: String,
+    private val schoolCode: Int,
     private val schoolType: SchoolType
 ) {
     private var from: LocalDate = startOfWeek()
