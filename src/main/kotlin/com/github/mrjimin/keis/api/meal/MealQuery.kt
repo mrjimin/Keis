@@ -1,6 +1,6 @@
 package com.github.mrjimin.keis.api.meal
 
-import com.github.mrjimin.keis.api.dsl.marker.Query
+import com.github.mrjimin.keis.internal.dsl.Query
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.MealType
 import com.github.mrjimin.keis.internal.toYmd

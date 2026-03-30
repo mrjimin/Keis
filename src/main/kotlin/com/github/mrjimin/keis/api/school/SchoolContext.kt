@@ -1,4 +1,4 @@
-package com.github.mrjimin.keis.api.context
+package com.github.mrjimin.keis.api.school
 
 import com.github.mrjimin.keis.KeisClient
 import com.github.mrjimin.keis.api.meal.MealQueryBuilder

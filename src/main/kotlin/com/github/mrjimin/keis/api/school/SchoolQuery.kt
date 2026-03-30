@@ -1,6 +1,6 @@
 package com.github.mrjimin.keis.api.school
 
-import com.github.mrjimin.keis.api.dsl.marker.Query
+import com.github.mrjimin.keis.internal.dsl.Query
 import com.github.mrjimin.keis.enums.EducationOffice
 import io.ktor.client.request.*
 

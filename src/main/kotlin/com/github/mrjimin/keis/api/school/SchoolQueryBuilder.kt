@@ -1,7 +1,7 @@
 package com.github.mrjimin.keis.api.school
 
-import com.github.mrjimin.keis.api.dsl.KeisDsl
-import com.github.mrjimin.keis.api.dsl.marker.Builder
+import com.github.mrjimin.keis.internal.dsl.KeisDsl
+import com.github.mrjimin.keis.internal.dsl.Builder
 import com.github.mrjimin.keis.enums.EducationOffice
 
 @KeisDsl

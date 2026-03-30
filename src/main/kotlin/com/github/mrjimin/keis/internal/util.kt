@@ -11,7 +11,7 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
 
-val json: Json = Json {
+internal val json: Json = Json {
     ignoreUnknownKeys = true
 }
 
@@ -22,7 +22,7 @@ private val dateFormat: DateTimeFormatter =
 
 fun LocalDate.toYmd(): String = this.format(dateFormat)
 
-val defaultClient: HttpClient by lazy {
+internal val defaultClient: HttpClient by lazy {
     HttpClient(CIO) {
         install(ContentNegotiation) {
             json(json)

@@ -3,7 +3,7 @@ package com.github.mrjimin.keis.internal.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class KeisHeadResult(
+internal data class KeisHeadResult(
     val code: String,
     val message: String
 )

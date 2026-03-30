@@ -1,4 +1,4 @@
-package com.github.mrjimin.keis.api.dsl.marker
+package com.github.mrjimin.keis.internal.dsl
 
 import com.github.mrjimin.keis.internal.endOfWeek
 import com.github.mrjimin.keis.internal.startOfWeek

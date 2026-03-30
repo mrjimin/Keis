@@ -1,8 +1,9 @@
-package com.github.mrjimin.keis.api.dsl.marker
+package com.github.mrjimin.keis.internal.dsl
 
-import io.ktor.client.request.*
+import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.parameter
 
-interface Query {
+internal interface Query {
     val pIndex: Int
     val pSize: Int
     val stats: Boolean
