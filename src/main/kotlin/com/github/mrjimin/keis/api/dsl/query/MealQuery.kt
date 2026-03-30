@@ -17,12 +17,11 @@ data class MealQuery(
     override fun apply(builder: HttpRequestBuilder) {
         builder.parameter("ATPT_OFCDC_SC_CODE", office.code)
         builder.parameter("SD_SCHUL_CODE", schoolCode)
+        builder.parameter("MLSV_FROM_YMD", from.toYmd())
+        builder.parameter("MLSV_TO_YMD", to.toYmd())
 
         if (mealType != MealType.ALL) {
             builder.parameter("MMEAL_SC_CODE", mealType.code)
         }
-
-        builder.parameter("MLSV_FROM_YMD", from.toYmd())
-        builder.parameter("MLSV_TO_YMD", to.toYmd())
     }
 }
