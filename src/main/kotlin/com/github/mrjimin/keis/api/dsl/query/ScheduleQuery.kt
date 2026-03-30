@@ -3,7 +3,6 @@ package com.github.mrjimin.keis.api.dsl.query
 import com.github.mrjimin.keis.enums.DayNightCourse
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolCourse
-import com.github.mrjimin.keis.enums.SchoolType
 import java.time.LocalDate
 
 data class ScheduleQuery(

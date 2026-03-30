@@ -1,10 +1,6 @@
 package com.github.mrjimin.keis.model.dto
 
-import com.github.mrjimin.keis.enums.BusinessType
-import com.github.mrjimin.keis.enums.DayNightCourse
-import com.github.mrjimin.keis.enums.EducationOffice
-import com.github.mrjimin.keis.enums.SchoolGender
-import com.github.mrjimin.keis.enums.SchoolType
+import com.github.mrjimin.keis.enums.*
 import com.github.mrjimin.keis.internal.toLocalDate
 import com.github.mrjimin.keis.model.domain.School
 import kotlinx.serialization.SerialName
