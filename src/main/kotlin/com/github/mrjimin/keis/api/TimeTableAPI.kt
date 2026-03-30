@@ -5,7 +5,6 @@ import com.github.mrjimin.keis.api.dsl.builder.TimetableQueryBuilder
 import com.github.mrjimin.keis.api.dsl.query.TimetableQuery
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolType
-import com.github.mrjimin.keis.internal.toYmd
 import com.github.mrjimin.keis.model.domain.School
 import com.github.mrjimin.keis.model.domain.Timetable
 import com.github.mrjimin.keis.model.dto.TimetableDTO

@@ -5,7 +5,6 @@ import com.github.mrjimin.keis.api.dsl.builder.MealQueryBuilder
 import com.github.mrjimin.keis.api.dsl.query.MealQuery
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.MealType
-import com.github.mrjimin.keis.internal.toYmd
 import com.github.mrjimin.keis.model.domain.Meal
 import com.github.mrjimin.keis.model.domain.School
 import com.github.mrjimin.keis.model.dto.MealDTO

@@ -4,7 +4,6 @@ import com.github.mrjimin.keis.KeisClient
 import com.github.mrjimin.keis.api.dsl.builder.ScheduleQueryBuilder
 import com.github.mrjimin.keis.api.dsl.query.ScheduleQuery
 import com.github.mrjimin.keis.enums.EducationOffice
-import com.github.mrjimin.keis.internal.toYmd
 import com.github.mrjimin.keis.model.domain.Schedule
 import com.github.mrjimin.keis.model.domain.School
 import com.github.mrjimin.keis.model.dto.ScheduleDTO
