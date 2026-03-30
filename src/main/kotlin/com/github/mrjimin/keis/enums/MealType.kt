@@ -1,11 +1,11 @@
 package com.github.mrjimin.keis.enums
 
-enum class MealType(val text: String) {
-    ALL("전체"),
-    BREAKFAST("조식"),
-    LUNCH("중식"),
-    DINNER("석식"),
-    UNKNOWN("Unknown");
+enum class MealType(val text: String, val code: Int) {
+    ALL("전체", 0),
+    BREAKFAST("조식", 1),
+    LUNCH("중식", 2),
+    DINNER("석식", 3),
+    UNKNOWN("Unknown", 0);
 
     companion object {
         private val map = entries.associateBy { it.text }
