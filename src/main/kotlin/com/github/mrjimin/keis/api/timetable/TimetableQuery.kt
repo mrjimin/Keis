@@ -4,8 +4,7 @@ import com.github.mrjimin.keis.api.dsl.marker.Query
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolType
 import com.github.mrjimin.keis.internal.toYmd
-import io.ktor.client.request.HttpRequestBuilder
-import io.ktor.client.request.parameter
+import io.ktor.client.request.*
 import java.time.LocalDate
 
 data class TimetableQuery(
