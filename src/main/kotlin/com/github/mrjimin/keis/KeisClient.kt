@@ -11,11 +11,12 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 
 class KeisClient(
-    val config: KeisConfig,
+    // val config: KeisConfig,
+    val key: String,
     val httpClient: HttpClient = defaultClient,
 ) {
 
-    constructor(key: String) : this(KeisConfig(key))
+//    constructor(key: String) : this(KeisConfig(key))
 
     suspend inline fun <reified T> requestRows(
         endpoint: String,
@@ -33,7 +34,7 @@ class KeisClient(
         return httpClient.get("https://open.neis.go.kr/hub/$endpoint") {
             accept(ContentType.Any)
 
-            parameter("KEY", config.key)
+            parameter("KEY", key)
             parameter("Type", "json")
 //            parameter("pIndex", config.pIndex)
 //            parameter("pSize", config.pSize)
