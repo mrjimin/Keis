@@ -1,9 +1,11 @@
 package com.github.mrjimin.keis.model.dto
 
 import com.github.mrjimin.keis.enums.BusinessType
+import com.github.mrjimin.keis.enums.DayNightCourse
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolGender
 import com.github.mrjimin.keis.enums.SchoolType
+import com.github.mrjimin.keis.internal.toLocalDate
 import com.github.mrjimin.keis.model.domain.School
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -38,7 +40,13 @@ data class SchoolDTO(
     val businessTypeText: String?,
 
     @SerialName("HMPG_ADRES")
-    val homepageUrl: String
+    val homepageUrl: String,
+
+    @SerialName("DGHT_SC_NM")
+    val dayNightCourseText: String,
+
+    @SerialName("FOND_YMD")
+    val establishedDateText: String
 ) {
     fun toDomain(): School = School(
         EducationOffice.from(officeCode, officeName),
@@ -50,5 +58,7 @@ data class SchoolDTO(
         location,
         BusinessType.from(businessTypeText),
         homepageUrl,
+        DayNightCourse.from(dayNightCourseText),
+        establishedDateText.toLocalDate()
     )
 }

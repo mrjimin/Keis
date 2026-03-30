@@ -1,9 +1,11 @@
 package com.github.mrjimin.keis.model.domain
 
 import com.github.mrjimin.keis.enums.BusinessType
+import com.github.mrjimin.keis.enums.DayNightCourse
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolGender
 import com.github.mrjimin.keis.enums.SchoolType
+import java.time.LocalDate
 
 data class School(
     val office: EducationOffice,
@@ -15,4 +17,6 @@ data class School(
     val location: String,
     val businessType: BusinessType,
     val homepageUrl: String,
+    val dayNightCourse: DayNightCourse,
+    val establishedDate: LocalDate
 )
