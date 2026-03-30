@@ -16,9 +16,11 @@ val json: Json = Json {
 }
 
 private val zone = ZoneId.of("Asia/Seoul")
-val dateFormat: DateTimeFormatter =
+private val dateFormat: DateTimeFormatter =
     DateTimeFormatter.ofPattern("yyyyMMdd")
         .withZone(zone)
+
+fun LocalDate.toYmd(): String = this.format(dateFormat)
 
 val defaultClient: HttpClient by lazy {
     HttpClient(CIO) {
