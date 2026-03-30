@@ -11,7 +11,7 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
 
-internal val json: Json = Json {
+val json: Json = Json {
     ignoreUnknownKeys = true
 }
 

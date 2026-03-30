@@ -1,8 +1,8 @@
 package com.github.mrjimin.keis.api.timetable
 
-import com.github.mrjimin.keis.internal.dsl.Query
 import com.github.mrjimin.keis.enums.EducationOffice
 import com.github.mrjimin.keis.enums.SchoolType
+import com.github.mrjimin.keis.internal.dsl.Query
 import com.github.mrjimin.keis.internal.toYmd
 import io.ktor.client.request.*
 import java.time.LocalDate

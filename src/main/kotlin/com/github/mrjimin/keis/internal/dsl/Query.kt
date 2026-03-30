@@ -1,7 +1,6 @@
 package com.github.mrjimin.keis.internal.dsl
 
-import io.ktor.client.request.HttpRequestBuilder
-import io.ktor.client.request.parameter
+import io.ktor.client.request.*
 
 internal interface Query {
     val pIndex: Int

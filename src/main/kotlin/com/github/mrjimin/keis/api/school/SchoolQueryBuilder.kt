@@ -1,8 +1,8 @@
 package com.github.mrjimin.keis.api.school
 
-import com.github.mrjimin.keis.internal.dsl.KeisDsl
-import com.github.mrjimin.keis.internal.dsl.Builder
 import com.github.mrjimin.keis.enums.EducationOffice
+import com.github.mrjimin.keis.internal.dsl.Builder
+import com.github.mrjimin.keis.internal.dsl.KeisDsl
 
 @KeisDsl
 class SchoolQueryBuilder: Builder<SchoolQuery> {

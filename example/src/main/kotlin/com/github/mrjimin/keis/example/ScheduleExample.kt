@@ -1,11 +1,11 @@
 package com.github.mrjimin.keis.example
 
 import com.github.mrjimin.keis.KeisClient
-import com.github.mrjimin.keis.internal.dsl.dateRange
-import com.github.mrjimin.keis.internal.dsl.today
 import com.github.mrjimin.keis.api.school.schoolContext
 import com.github.mrjimin.keis.enums.DayNightCourse
 import com.github.mrjimin.keis.enums.SchoolCourse
+import com.github.mrjimin.keis.internal.dsl.dateRange
+import com.github.mrjimin.keis.internal.dsl.today
 import java.time.LocalDate
 
 suspend fun main() {
