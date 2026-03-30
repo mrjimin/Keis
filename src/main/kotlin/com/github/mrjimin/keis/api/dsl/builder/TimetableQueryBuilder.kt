@@ -13,7 +13,7 @@ class TimetableQueryBuilder(
     private val office: EducationOffice,
     private val schoolCode: Int,
     private val schoolType: SchoolType
-) {
+): Builder<TimetableQuery> {
     private var from: LocalDate = startOfWeek()
     private var to: LocalDate = endOfWeek()
     private var grade: Int? = null
@@ -67,7 +67,7 @@ class TimetableQueryBuilder(
         this.maxPeriod = range.last
     }
 
-    fun build(): TimetableQuery = TimetableQuery(
+    override fun build(): TimetableQuery = TimetableQuery(
         office,
         schoolCode,
         schoolType,

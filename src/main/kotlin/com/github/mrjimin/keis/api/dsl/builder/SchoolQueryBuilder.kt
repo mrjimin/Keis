@@ -5,7 +5,7 @@ import com.github.mrjimin.keis.api.dsl.query.SchoolQuery
 import com.github.mrjimin.keis.enums.EducationOffice
 
 @KeisDsl
-class SchoolQueryBuilder {
+class SchoolQueryBuilder: Builder<SchoolQuery> {
     private var office: EducationOffice? = null
     private var schoolName: String? = null
     private var schoolCode: Int? = null
@@ -22,7 +22,7 @@ class SchoolQueryBuilder {
         this.schoolCode = code
     }
 
-    fun build(): SchoolQuery = SchoolQuery(
+    override fun build(): SchoolQuery = SchoolQuery(
         office,
         schoolName,
         schoolCode

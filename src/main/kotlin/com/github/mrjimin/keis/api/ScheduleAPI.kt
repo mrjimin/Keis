@@ -46,18 +46,7 @@ private suspend fun KeisClient.fetchSchedule(
     block: HttpRequestBuilder.() -> Unit = {}
 ): List<Schedule> {
     return requestRows<ScheduleDTO>("SchoolSchedule") {
-        query.applyTo(this)
+        query.apply(this)
         block()
     }.map { it.toDomain() }
-}
-
-private fun ScheduleQuery.applyTo(builder: HttpRequestBuilder) {
-    builder.parameter("ATPT_OFCDC_SC_CODE", office.code)
-    builder.parameter("SD_SCHUL_CODE", schoolCode)
-
-    dayNightCourse?.let { builder.parameter("DGHT_CRSE_SC_NM", it.value) }
-    schoolCourse?.let { builder.parameter("SCHUL_CRSE_SC_NM", it.value) }
-
-    builder.parameter("AA_FROM_YMD", from.toYmd())
-    builder.parameter("AA_TO_YMD", to.toYmd())
 }

@@ -13,7 +13,7 @@ import java.time.LocalDate
 class ScheduleQueryBuilder(
     private val office: EducationOffice,
     private val schoolCode: Int
-) {
+): Builder<ScheduleQuery> {
     private var from: LocalDate = startOfWeek()
     private var to: LocalDate = endOfWeek()
     private var dayNightCourse: DayNightCourse? = null
@@ -48,7 +48,7 @@ class ScheduleQueryBuilder(
         this.schoolCourse = course
     }
 
-    fun build(): ScheduleQuery = ScheduleQuery(
+    override fun build(): ScheduleQuery = ScheduleQuery(
         office,
         schoolCode,
         dayNightCourse,

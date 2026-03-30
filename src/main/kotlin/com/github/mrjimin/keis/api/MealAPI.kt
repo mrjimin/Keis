@@ -43,19 +43,7 @@ private suspend fun KeisClient.fetchMeal(
     block: HttpRequestBuilder.() -> Unit = {}
 ): List<Meal> {
     return requestRows<MealDTO>("mealServiceDietInfo") {
-        query.applyTo(this)
+        query.apply(this)
         block()
     }.map { it.toDomain() }
-}
-
-private fun MealQuery.applyTo(builder: HttpRequestBuilder) {
-    builder.parameter("ATPT_OFCDC_SC_CODE", office.code)
-    builder.parameter("SD_SCHUL_CODE", schoolCode)
-
-    if (mealType != MealType.ALL) {
-        builder.parameter("MMEAL_SC_CODE", mealType.code)
-    }
-
-    builder.parameter("MLSV_FROM_YMD", from.toYmd())
-    builder.parameter("MLSV_TO_YMD", to.toYmd())
 }

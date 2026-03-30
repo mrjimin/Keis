@@ -13,7 +13,7 @@ class MealQueryBuilder(
     private val office: EducationOffice,
     private val schoolCode: Int,
     private val mealType: MealType = MealType.ALL,
-) {
+): Builder<MealQuery> {
     private var from: LocalDate = startOfWeek()
     private var to: LocalDate = endOfWeek()
 
@@ -38,7 +38,7 @@ class MealQueryBuilder(
         this.to = endOfWeek()
     }
 
-    fun build(): MealQuery = MealQuery(
+    override fun build(): MealQuery = MealQuery(
         office,
         schoolCode,
         mealType,

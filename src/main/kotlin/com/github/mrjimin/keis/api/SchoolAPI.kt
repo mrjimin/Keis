@@ -65,13 +65,7 @@ private suspend fun KeisClient.fetchSchool(
     block: HttpRequestBuilder.() -> Unit = {}
 ): List<School> {
     return requestRows<SchoolDTO>("schoolInfo") {
-        query.applyTo(this)
+        query.apply(this)
         block()
     }.map { it.toDomain() }
-}
-
-private fun SchoolQuery.applyTo(builder: HttpRequestBuilder) {
-    office?.let { builder.parameter("ATPT_OFCDC_SC_CODE", it.code) }
-    schoolName?.let { builder.parameter("SCHUL_NM", it) }
-    schoolCode?.let { builder.parameter("SD_SCHUL_CODE", it) }
 }

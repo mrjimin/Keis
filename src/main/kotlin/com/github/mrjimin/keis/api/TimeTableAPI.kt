@@ -49,7 +49,7 @@ private suspend fun KeisClient.fetchTimetable(
     block: HttpRequestBuilder.() -> Unit = {}
 ): List<Timetable> {
     return requestRows<TimetableDTO>(query.schoolType.endpoint) {
-        query.applyTo(this)
+        query.apply(this)
         block()
     }.map { it.toDomain() }
 }
@@ -85,16 +85,4 @@ private fun Timetable.toEmpty(period: Int): Timetable {
         classroom = null,
         content = null
     )
-}
-
-private fun TimetableQuery.applyTo(builder: HttpRequestBuilder) {
-    builder.parameter("ATPT_OFCDC_SC_CODE", office.code)
-    builder.parameter("SD_SCHUL_CODE", schoolCode)
-
-    builder.parameter("TI_FROM_YMD", from.toYmd())
-    builder.parameter("TI_TO_YMD", to.toYmd())
-
-    grade?.let { builder.parameter("GRADE", it) }
-    classNumber?.let { builder.parameter("CLASS_NM", it) }
-    major?.let { builder.parameter("DDDEP_NM", it) }
 }
