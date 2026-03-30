@@ -5,6 +5,32 @@
 포맷은 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)을 기반으로 하며,  
 이 프로젝트는 [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 규칙을 따릅니다.
 
+## 1.0.2 – 2026-03-30
+
+### 추가
+- `MealQueryBuilder` 및 DSL 확장 함수(`today()`, `thisWeek()`, `date()`, `dateRange()`, `page()`) 추가
+- `MutableDateRange`와 `MutablePageable` 인터페이스 추가, Builder 내부에서 날짜와 페이징 제어 가능
+- `MealQuery` immutable 데이터 클래스 추가, HttpRequestBuilder로 NEIS API 요청 파라미터 적용
+- `KeisClient`에서 `requestRows()`와 `parseRows()` 공통 함수 추가, 모든 NEIS 엔드포인트 재사용 가능
+- Builder 중심의 API 호출 패턴 도입, DSL로 직관적인 날짜/페이지 지정 가능
+
+### 개선
+- 기존 `KeisConfig`의 기본값(pIndex, pSize, stats 등)을 제거하고 Builder에서 직접 제어하도록 개선
+- Query 객체를 immutable로 만들어 외부에서 직접 수정 불가능하게 변경
+- Meal API 호출 시 Builder 기본값을 사용하고, DSL로만 override 가능하도록 구조 개선
+- API Key는 Config에서만 관리하고, 나머지 옵션은 Builder/DSL로 통제
+
+### 수정
+- 기존 Meal API의 date/from/to/paging 파라미터 처리 로직을 Builder + DSL 중심으로 재작성
+- HttpRequestBuilder parameter 세팅 방식을 Query의 `apply()`로 일원화
+
+### 삭제
+- Config에서 기본 페이징 및 날짜 관련 필드 삭제 (`pIndex`, `pSize`, `stats`)
+- Builder 외부에서 Query 객체를 직접 수정할 수 있는 구조 제거
+- `KeisConfig`삭제
+
+---
+
 ## 1.0.1 - 2026-03-30
 
 ### 개선
@@ -41,6 +67,8 @@
 - 불필요한 직접 파라미터 기반 API 구조 일부 제거
 - 중복된 request 로직 및 legacy 코드 정리
 - 전역 dateFormat 의존 제거
+
+---
 
 ## 0.0.3 – 2026-03-29
 
