@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.mrjimin:Keis:1.0.1")
+    implementation("com.github.mrjimin:Keis:1.0.2")
 }
 ```
 
