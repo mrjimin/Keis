@@ -17,7 +17,7 @@ data class SchoolDTO(
     val officeName: String,
 
     @SerialName("SD_SCHUL_CODE")
-    val code: String,
+    val code: Int,
 
     @SerialName("SCHUL_NM")
     val name: String,

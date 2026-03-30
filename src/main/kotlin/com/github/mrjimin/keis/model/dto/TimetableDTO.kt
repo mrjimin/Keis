@@ -15,7 +15,7 @@ data class TimetableDTO(
     val officeName: String,
 
     @SerialName("SD_SCHUL_CODE")
-    val schoolCode: String,
+    val schoolCode: Int,
 
     @SerialName("SCHUL_NM")
     val schoolName: String,

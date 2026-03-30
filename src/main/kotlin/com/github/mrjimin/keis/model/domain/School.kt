@@ -7,7 +7,7 @@ import com.github.mrjimin.keis.enums.SchoolType
 
 data class School(
     val office: EducationOffice,
-    val code: String,
+    val code: Int,
     val name: String,
     val nameEn: String?,
     val type: SchoolType,

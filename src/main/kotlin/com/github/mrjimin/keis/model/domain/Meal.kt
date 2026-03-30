@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 data class Meal(
     val office: EducationOffice,
-    val schoolCode: String,
+    val schoolCode: Int,
     val schoolName: String,
     val type: MealType,
     val date: LocalDate,

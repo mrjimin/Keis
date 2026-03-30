@@ -5,7 +5,7 @@ import java.time.LocalDate
 
 data class Timetable(
     val office: EducationOffice,
-    val schoolCode: String,
+    val schoolCode: Int,
     val schoolName: String,
     val grade: Int,
     val classNumber: Int,
