@@ -15,6 +15,8 @@ class KeisClient(
     val httpClient: HttpClient = defaultClient,
 ) {
 
+    fun close() = httpClient.close()
+
     suspend inline fun <reified T> requestRows(
         endpoint: String,
         noinline block: HttpRequestBuilder.() -> Unit = {}
