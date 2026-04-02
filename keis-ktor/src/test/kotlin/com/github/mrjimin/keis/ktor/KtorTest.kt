@@ -1,7 +1,6 @@
 package com.github.mrjimin.keis.ktor
 
 import com.github.mrjimin.keis.core.api.school.schoolContext
-import com.github.mrjimin.keis.core.enums.MealType
 import io.github.cdimascio.dotenv.Dotenv
 import kotlinx.coroutines.runBlocking
 import java.time.LocalDate
@@ -10,9 +9,11 @@ import kotlin.test.Test
 class KtorTest {
 
     @Test
-    fun `ktor`() = runBlocking  {
-        val client = keisKtor(Dotenv.load().get("YOUR_API_KEY"))
-        val school = client.schoolContext("우석고")
+    fun ktor() = runBlocking  {
+        val key = Dotenv.configure().directory("../").load()
+        val client = keisKtor(key.get("YOUR_API_KEY"))
+        val context = client.schoolContext("우석고") ?: return@runBlocking
+        println(context.school)
 //    println(school?.meal {
 //        date {
 //            today()
@@ -20,20 +21,33 @@ class KtorTest {
 //        type(MealType.DINNER)
 //    }!!.content )
 
-        val specificSchedule = school?.schedules {
-            dateRange {
-                single(LocalDate.of(2026, 4, 2))
-            }
-        }
-
-        println(specificSchedule)
+//        val specificSchedule = school?.schedules {
+//            dateRange {
+//                single(LocalDate.of(2026, 4, 2))
+//            }
+//        }
 //
-        println(school?.meals {
-            type(MealType.DINNER)
+//        println(specificSchedule)
+////
+//        println(school?.meals {
+//            type(MealType.DINNER)
+//            dateRange {
+//                thisWeek()
+//            }
+//        })
+
+        context.timetables {
+            grade(2)
+            classNumber(5)
+            fillMissing()
+
+            // today()
             dateRange {
-                thisWeek()
+                single(LocalDate.of(2026, 3, 23))
             }
-        })
+        }.forEach {
+            println("${it.period} - ${it.content ?: "공강"}")
+        }
 //
 //        println(school?.schedules {})
     }

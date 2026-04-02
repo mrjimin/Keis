@@ -12,6 +12,7 @@ suspend fun KeisClient.timetables(
 ): List<Timetable> =
     requestTimetable(
         timetableQuery(school) {
+            school(school)
             block()
         }
     )
