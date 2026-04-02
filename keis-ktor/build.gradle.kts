@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm")
+    alias(libs.plugins.ktor)
 }
 
 group = "com.github.mrjimin.keis.ktor"
@@ -14,4 +15,8 @@ dependencies {
     implementation(libs.ktor.serialization.kotlinx.json)
 
     implementation(libs.logback.classic)
+}
+
+application {
+    mainClass.set("com.github.mrjimin.keis.ktor.MainKt")
 }
