@@ -72,22 +72,13 @@ suspend fun main() {
 ---
 
 ## 📚 API
-### 🏫 [School](example/src/main/kotlin/com/github/mrjimin/keis/example/SchoolExample.kt)
+### 🏫 [School](example/src/main/kotlin/com/github/mrjimin/keis/example/common/SchoolExample.kt)
 ```kotlin
 client.school("학교명"): School?
 client.schools("학교명"): List<School>
 ```
 
-### 📚 [Timetable](example/src/main/kotlin/com/github/mrjimin/keis/example/TimetableExample.kt)
-```kotlin
-context.timetable {
-    grade(2)
-    classNumber(5)
-    fillMissing()
-}
-```
-
-### 🍽️ [Meal](example/src/main/kotlin/com/github/mrjimin/keis/example/MealExample.kt)
+### 🍽️ [Meal](example/src/main/kotlin/com/github/mrjimin/keis/example/common/MealExample.kt)
 ```kotlin
 context.meal {
     type(MealType.BREAKFAST)
@@ -101,7 +92,16 @@ context.meal {
 }
 ```
 
-### 📅 [Schedule](example/src/main/kotlin/com/github/mrjimin/keis/example/ScheduleExample.kt)
+### 📚 [Timetable](example/src/main/kotlin/com/github/mrjimin/keis/example/common/TimetableExample.kt)
+```kotlin
+context.timetable {
+    grade(2)
+    classNumber(5)
+    fillMissing()
+}
+```
+
+### 📅 [Schedule](example/src/main/kotlin/com/github/mrjimin/keis/example/common/ScheduleExample.kt)
 ```kotlin
 context.schedule {
   today()
