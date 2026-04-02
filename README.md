@@ -74,8 +74,8 @@ suspend fun main() {
 ## 📚 API
 ### 🏫 [School](example/src/main/kotlin/com/github/mrjimin/keis/example/common/SchoolExample.kt)
 ```kotlin
-client.school("학교명"): School?
-client.schools("학교명"): List<School>
+client.school("학교명")
+client.schools("학교명")
 ```
 
 ### 🍽️ [Meal](example/src/main/kotlin/com/github/mrjimin/keis/example/common/MealExample.kt)
