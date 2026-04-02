@@ -5,6 +5,19 @@
 포맷은 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)을 기반으로 하며,  
 이 프로젝트는 [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 규칙을 따릅니다.
 
+## 2.0.0 - 2026-04-02
+
+### 추가
+- `http4k` 지원
+- `keisKtor`, `keisHttp4k`, `keis` 함수
+- `school`, `dataRange` DSL
+
+### 개선
+- DSL 기반의 API 호출
+
+### 수정
+- API의 date/from/to/paging 파라미터 처리 로직을 Builder + DSL 중심으로 재작성
+
 ## 1.0.2 – 2026-03-30
 
 ### 추가

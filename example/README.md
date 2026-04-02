@@ -1,94 +1,165 @@
 # Examples
 
-이 폴더는 Keis Kotlin Client 사용 예제를 포함합니다.
+이 폴더는 **Keis Kotlin Client** 사용 예제를 포함합니다.
+
+---
 
 ## 🏫 School
-학교 조회
+
+학교 조회 예제입니다.
 
 ```kotlin
-// 여러 학교 조회
-val schools = client.schools("전주고")
-schools.forEach { println(it.name) }
-// 예: 전주고등학교, 전주고등학교부설방송통신고등학교
-
-// 단일 학교 조회
+// 이름으로 학교 조회
 val school = client.school("우석고")
-println(school?.name) // 우석고등학교
 
-// SchoolContext 생성 (추천)
+// 여러 학교 조회 (이름 필터)
+val schools = client.schools {
+    name("우석")
+}
+
+// 교육청 + 코드로 학교 조회
+val schoolByCode = client.school(EducationOffice.JEONBUK, 8321094)
+
+// DSL 사용
+val filteredSchools = client.schools {
+    school {
+        office(EducationOffice.JEONBUK)
+        code(8321094)
+    }
+}
+
+// SchoolContext 생성
 val context = client.schoolContext("우석고")
+
+val asContext = school?.asContext(client)
 ```
 
-## 📚 Timetable
-시간표 조회
-
-```kotlin
-// 기본 조회 (이번 주)
-val timetable = context.timetable()
-
-// 누락 교시 자동 채우기
-val filled = context.timetable {
-    fillMissing()
-}
-
-// 특정 학년 / 반
-val classTimetable = context.timetable {
-    grade(1)
-    classNumber(1)
-    fillMissing()
-}
-
-// 날짜 범위 지정
-val range = context.timetable {
-    dateRange(LocalDate.now(), LocalDate.now().plusDays(2))
-}
-```
+---
 
 ## 🍽️ Meal
-급식 조회
+
+급식 조회 예제입니다.
 
 ```kotlin
-// 기본 조회 (이번 주)
-val meals = context.meal()
+// 급식 조회
+val meals = context.meals()
 
 // 특정 급식 (점심)
-val lunch = context.meal(MealType.LUNCH)
-
-// 오늘 급식
-val today = context.meal {
-    today()
+val lunch = context.meals {
+    type(MealType.LUNCH)
 }
 
-// 날짜 범위 지정
-val range = context.meal(MealType.ALL) {
-    dateRange(LocalDate.now(), LocalDate.now().plusDays(2))
+// 오늘 급식
+val todayMeal = context.meals {
+    dateRange {
+        today()
+    }
+    // today() 사용가능
+}
+
+// 특정 날짜 급식
+val specificDate = context.meals {
+    dateRange {
+        single(LocalDate.of(2026, 4, 2))
+    }
+}
+
+// 날짜 범위 급식
+val rangeMeals = context.meals {
+    dateRange {
+        range(LocalDate.now(), LocalDate.now().plusDays(3))
+    }
+}
+
+// 이번 주 급식
+val weekMeals = context.meals {
+    dateRange {
+        thisWeek()
+    }
 }
 ```
 
-## 📅 Schedule
-학사일정 조회
+---
+
+## 📚 Timetable
+
+시간표 조회 예제입니다.
 
 ```kotlin
-// 기본 조회 (이번 주)
-val schedules = context.schedule()
+// 시간표 조회
+val timetable = context.timetables()
 
-// 오늘 일정
-val today = context.schedule {
-    today()
+// 오늘 시간표
+val todayTimetable = context.timetables {
+    dateRange {
+        today()
+    }
+    // today() 사용가능
 }
 
-// 날짜 범위
-val range = context.schedule {
-    dateRange(LocalDate.now(), LocalDate.now().plusDays(7))
+// 특정 날짜 시간표
+val specificDateTimetable = context.timetables {
+    dateRange {
+        single(LocalDate.of(2026, 3, 30))
+    }
+}
+
+// 특정 반 시간표
+val classTimetable = context.timetables {
+    grade(2)
+    classNumber(5)
+}
+
+// 빈 교시 채우기
+val filledTimetable = context.timetables {
+    grade(2)
+    classNumber(5)
+    fillMissing() // fillMissing(boolean = true)
+}
+
+// 기간 + 필터
+val advancedTimetable = context.timetables {
+    grade(2)
+    classNumber(5)
+    dateRange {
+        range(LocalDate.now(), LocalDate.now().plusDays(5))
+    }
+    fillMissing(true)
+}
+```
+
+---
+
+## 📅 Schedule
+
+학사일정 조회 예제입니다.
+
+```kotlin
+    // 일정 조회
+val schedules = context.schedules()
+
+// 오늘 일정
+val todaySchedule = context.schedules {
+    dateRange {
+        today()
+    }
+    // today() 사용가능
+}
+
+// 특정 날짜 일정
+val specificSchedule = context.schedules {
+    dateRange {
+        single(LocalDate.of(2026, 4, 2))
+    }
 }
 
 // 주야 과정 필터
-val dayCourse = context.schedule {
+val dayCourseSchedule = context.schedules {
     dayNightCourse(DayNightCourse.DAY)
 }
 
 // 학교 과정 필터
-val course = context.schedule {
+val schoolCourseSchedule = context.schedules {
     schoolCourse(SchoolCourse.GENERAL)
 }
 ```

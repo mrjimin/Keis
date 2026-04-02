@@ -1,34 +1,31 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.ktor)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 group = "com.github.mrjimin.keis"
-version = "0.0.3"
+version = "2.0.0"
 
-application {
-    mainClass = "com.github.mrjimin.keis.MainKt"
-}
+subprojects {
 
-dependencies {
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.cio)
+    apply {
+        plugin("org.jetbrains.kotlin.jvm")
+    }
 
-    implementation(libs.ktor.client.content.negotiation)
-    implementation(libs.ktor.serialization.kotlinx.json)
+    repositories {
+        mavenCentral()
+    }
 
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.logback.classic)
+    dependencies {
+        implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
+        testImplementation(kotlin("test"))
+    }
 
-    testImplementation(kotlin("test"))
-}
+    kotlin {
+        jvmToolchain(21)
+    }
 
-tasks.test {
-    useJUnitPlatform()
-    ignoreFailures = true
-}
-
-kotlin {
-    jvmToolchain(21)
+    tasks.test {
+        useJUnitPlatform()
+        ignoreFailures = true
+    }
 }
