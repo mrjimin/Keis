@@ -15,7 +15,3 @@ dependencies {
 
     implementation(libs.logback.classic)
 }
-
-tasks.named("shadowJar") {
-    enabled = false
-}
