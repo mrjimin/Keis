@@ -22,13 +22,19 @@ Kotlin 기반 NEIS(교육청) API 클라이언트 라이브러리
 
 ## 📦 Installation
 
-```gradle
+```kotlin
 repositories {
     maven { url = uri("https://jitpack.io") }
 }
 
+val keisVersion = "2.0.0"
+
 dependencies {
-    implementation("com.github.mrjimin:Keis:1.0.2")
+    implementation("com.github.mrjimin.keis.core:keis-core:$keisVersion")
+    
+    // optional
+    implementation("com.github.mrjimin.keis.ktor:keis-ktor:$keisVersion")
+    implementation("com.github.mrjimin.keis.http4k:keis-http4k:$keisVersion")
 }
 ```
 
