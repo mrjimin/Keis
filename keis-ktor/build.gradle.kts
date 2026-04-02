@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm")
-    alias(libs.plugins.ktor)
+    id("com.gradleup.shadow") version "9.4.1"
 }
 
 group = "com.github.mrjimin.keis.ktor"
@@ -17,6 +17,6 @@ dependencies {
     implementation(libs.logback.classic)
 }
 
-application {
-    mainClass.set("com.github.mrjimin.keis.ktor.MainKt")
+tasks.named("shadowJar") {
+    enabled = false
 }
