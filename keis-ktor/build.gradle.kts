@@ -18,3 +18,7 @@ dependencies {
     implementation(libs.logback.classic)
 
 }
+
+tasks.matching { it.name == "shadowJar" }.configureEach {
+    enabled = false
+}

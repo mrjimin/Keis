@@ -9,6 +9,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 }
 
-kotlin {
-    jvmToolchain(21)
+tasks.withType<PublishToMavenLocal>().configureEach {
+    enabled = false
 }

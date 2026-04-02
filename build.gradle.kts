@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    `maven-publish`
 }
 
 group = "com.github.mrjimin.keis"
@@ -9,6 +10,7 @@ subprojects {
 
     apply {
         plugin("org.jetbrains.kotlin.jvm")
+        plugin("maven-publish")
     }
 
     repositories {
@@ -27,5 +29,13 @@ subprojects {
     tasks.test {
         useJUnitPlatform()
         ignoreFailures = true
+    }
+
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from(components["java"])
+            }
+        }
     }
 }
