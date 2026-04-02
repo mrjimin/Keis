@@ -1,6 +1,5 @@
 plugins {
     kotlin("jvm")
-    alias(libs.plugins.ktor)
 }
 
 group = "com.github.mrjimin.keis.ktor"
@@ -17,8 +16,6 @@ dependencies {
     implementation(libs.logback.classic)
 }
 
-tasks.configureEach {
-    if (name.contains("shadow", ignoreCase = true)) {
-        enabled = false
-    }
+tasks.named("shadowJar") {
+    enabled = false
 }
