@@ -28,7 +28,6 @@ repositories {
 }
 
 val keisVersion = "2.0.0"
-
 dependencies {
     implementation("com.github.mrjimin.Keis:keis-core:$keisVersion")
 
