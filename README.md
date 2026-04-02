@@ -30,11 +30,10 @@ repositories {
 val keisVersion = "2.0.0"
 
 dependencies {
-    implementation("com.github.mrjimin.keis.core:keis-core:$keisVersion")
-    
-    // optional
-    implementation("com.github.mrjimin.keis.ktor:keis-ktor:$keisVersion")
-    implementation("com.github.mrjimin.keis.http4k:keis-http4k:$keisVersion")
+    implementation("com.github.mrjimin.Keis:keis-core:$keisVersion")
+
+    implementation("com.github.mrjimin.Keis:keis-ktor:$keisVersion") // ktor
+    implementation("com.github.mrjimin.Keis:keis-http4k:$keisVersion") // http4k
 }
 ```
 
