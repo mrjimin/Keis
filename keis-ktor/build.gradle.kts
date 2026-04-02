@@ -8,9 +8,10 @@ version = parent!!.version
 dependencies {
     implementation(project(":keis-core"))
 
-    implementation("io.ktor:ktor-client-core:3.4.2")
-    implementation("io.ktor:ktor-client-cio:3.4.2")
-    implementation("io.ktor:ktor-client-content-negotiation:3.4.2")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:3.4.2")
-    implementation("ch.qos.logback:logback-classic:1.5.32")
+    api(libs.ktor.client.core)
+    api(libs.ktor.client.cio)
+    api(libs.ktor.client.content.negotiation)
+    api(libs.ktor.serialization.kotlinx.json)
+
+    implementation(libs.logback.classic)
 }
