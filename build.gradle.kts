@@ -39,17 +39,4 @@ subprojects {
         }
     }
 
-    tasks.configureEach {
-        if (name.contains("shadow", ignoreCase = true)) {
-            enabled = false
-        }
-    }
-}
-
-project(":example") {
-    tasks.configureEach {
-        if (name.contains("publish", ignoreCase = true)) {
-            enabled = false
-        }
-    }
 }
