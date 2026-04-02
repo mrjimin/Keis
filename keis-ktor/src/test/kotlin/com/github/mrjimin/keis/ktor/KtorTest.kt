@@ -10,7 +10,7 @@ import kotlin.test.Test
 class KtorTest {
 
     @Test
-    fun `http4k`() = runBlocking  {
+    fun `ktor`() = runBlocking  {
         val client = keisKtor(Dotenv.load().get("YOUR_API_KEY"))
         val school = client.schoolContext("우석고")
 //    println(school?.meal {
