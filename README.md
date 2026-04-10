@@ -42,8 +42,8 @@ dependencies {
 ## 🚀 Quick Start
 ```kotlin
 suspend fun main() {
-    val client = keisKtor("YOUR_API_KEY") // keisHttp4k("YOUR_API_KEY")
-
+    val client = KeisClient("YOUR_API_KEY", engine) // keis("YOUR_API_KEY")
+  
     // 학교 컨텍스트 생성
     val context = client.schoolContext("우석고") ?: return
 
