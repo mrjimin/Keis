@@ -27,12 +27,13 @@ repositories {
     maven { url = uri("https://jitpack.io") }
 }
 
-val keisVersion = "2.0.0"
+val keisVersion = "2.0.1"
 dependencies {
     implementation("com.github.mrjimin.Keis:keis-core:$keisVersion")
 
     implementation("com.github.mrjimin.Keis:keis-ktor:$keisVersion") // ktor
     implementation("com.github.mrjimin.Keis:keis-http4k:$keisVersion") // http4k
+    implementation("com.github.mrjimin.Keis:keis-spring:$keisVersion") // spring
 }
 ```
 
