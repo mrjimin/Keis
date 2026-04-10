@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.github.mrjimin.keis"
-version = "2.0.0"
+version = "2.0.1"
 
 subprojects {
 
@@ -23,7 +23,7 @@ subprojects {
     }
 
     kotlin {
-        jvmToolchain(25)
+        jvmToolchain(21)
     }
 
     tasks.test {
