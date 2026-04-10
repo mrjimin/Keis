@@ -4,8 +4,7 @@ Kotlin 기반 NEIS(교육청) API 클라이언트 라이브러리
 
 [![](https://jitpack.io/v/mrjimin/Keis.svg)](https://jitpack.io/#mrjimin/Keis)
 [![GitHub License](https://img.shields.io/github/license/mrjimin/Keis?style=flat-square)](LICENSE)
-[![Kotlin](https://img.shields.io/badge/kotlin-2.3.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/mrjimin/Keis)
+[![Kotlin](https://img.shields.io/badge/kotlin-2.3.20-blue.svg?logo=kotlin)](http://kotlinlang.org)k
 
 ---
 
@@ -31,7 +30,7 @@ val keisVersion = "2.0.2"
 dependencies {
     implementation("com.github.mrjimin.Keis:keis-ktor:$keisVersion") // ktor
     implementation("com.github.mrjimin.Keis:keis-http4k:$keisVersion") // http4k
-    implementation("com.github.mrjimin.Keis:keis-spring:$keisVersion") // spring
+    implementation("com.github.mrjimin.Keis:keis-spring-boot:$keisVersion") // spring-boot (webFlux, RestClient)
 }
 ```
 
