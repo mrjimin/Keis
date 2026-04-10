@@ -7,5 +7,5 @@ group = "com.github.mrjimin.keis.core"
 version = parent!!.version
 
 dependencies {
-    implementation(libs.kotlinx.serialization.json)
+    api(libs.kotlinx.serialization.json)
 }
