@@ -43,7 +43,7 @@ class KtorTest {
 
             // today()
             dateRange {
-                single(LocalDate.of(2026, 3, 23))
+                single(LocalDate.of(2026, 4, 17))
             }
         }.forEach {
             println("${it.period} - ${it.content ?: "공강"}")

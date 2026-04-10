@@ -2,7 +2,6 @@ package com.github.mrjimin.keis.core.model.query.context
 
 import com.github.mrjimin.keis.core.enums.EducationOffice
 import com.github.mrjimin.keis.core.model.domain.School
-import com.github.mrjimin.keis.core.model.query.QueryContext
 
 interface SchoolQuery : QueryContext {
 

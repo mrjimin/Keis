@@ -1,7 +1,5 @@
 package com.github.mrjimin.keis.core.model.query.context
 
-import com.github.mrjimin.keis.core.model.query.QueryContext
-
 interface PagingQuery : QueryContext {
     fun page(index: Int) = apply {
         require(index >= 1) { "페이지 번호는 1 이상이어야 합니다." }

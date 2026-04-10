@@ -43,8 +43,9 @@ data class SchoolDTO(
 
     @SerialName("FOND_YMD")
     val establishedDateText: String
-) {
-    fun toDomain(): School = School(
+): DomainConverter<School> {
+
+    override fun toDomain(): School = School(
         EducationOffice.from(officeCode, officeName),
         code,
         name,

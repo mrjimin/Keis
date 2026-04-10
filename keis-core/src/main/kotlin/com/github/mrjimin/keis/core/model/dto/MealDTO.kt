@@ -41,8 +41,9 @@ data class MealDTO(
 
     @SerialName("CAL_INFO")
     val caloriesText: String
-) {
-    fun toDomain(): Meal = Meal(
+): DomainConverter<Meal> {
+
+    override fun toDomain(): Meal = Meal(
         EducationOffice.from(officeCode, officeName),
         schoolCode,
         schoolName,

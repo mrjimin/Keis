@@ -49,9 +49,9 @@ data class TimetableDTO(
 
     @SerialName("ITRT_CNTNT")
     val content: String? = null
-) {
+): DomainConverter<Timetable> {
 
-    fun toDomain(): Timetable = Timetable(
+    override fun toDomain(): Timetable = Timetable(
         EducationOffice.from(officeCode, officeName),
         schoolCode,
         schoolName,

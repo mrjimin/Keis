@@ -4,7 +4,6 @@ import com.github.mrjimin.keis.core.internal.endOfWeek
 import com.github.mrjimin.keis.core.internal.now
 import com.github.mrjimin.keis.core.internal.startOfWeek
 import com.github.mrjimin.keis.core.internal.toYmd
-import com.github.mrjimin.keis.core.model.query.QueryContext
 import java.time.LocalDate
 
 interface DateRangeQuery : QueryContext {

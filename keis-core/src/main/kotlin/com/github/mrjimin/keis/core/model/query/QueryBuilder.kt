@@ -1,6 +1,7 @@
 package com.github.mrjimin.keis.core.model.query
 
 import com.github.mrjimin.keis.core.model.query.context.PagingQuery
+import com.github.mrjimin.keis.core.model.query.context.QueryContext
 import com.github.mrjimin.keis.core.model.query.context.SchoolQuery
 import com.github.mrjimin.keis.core.model.query.context.StatsOptionQuery
 
