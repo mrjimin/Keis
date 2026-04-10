@@ -1,7 +1,5 @@
 plugins {
     kotlin("jvm")
-    alias(libs.plugins.kotlin.spring)
-    alias(libs.plugins.spring.boot)
 }
 
 group = "com.github.mrjimin.keis.spring"
@@ -27,8 +25,4 @@ tasks.test {
         showStandardStreams = true
         events("passed", "failed", "skipped")
     }
-}
-
-tasks.named("bootJar") {
-    enabled = false
 }
