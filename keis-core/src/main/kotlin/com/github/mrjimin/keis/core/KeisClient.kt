@@ -2,8 +2,8 @@ package com.github.mrjimin.keis.core
 
 import com.github.mrjimin.keis.core.internal.json
 import com.github.mrjimin.keis.core.internal.model.KeisWrapper
-import com.github.mrjimin.keis.core.model.http.HttpEngine
-import com.github.mrjimin.keis.core.model.http.HttpResponse
+import com.github.mrjimin.keis.core.internal.http.HttpEngine
+import com.github.mrjimin.keis.core.internal.http.HttpResponse
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.jsonObject

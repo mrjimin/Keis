@@ -1,8 +1,8 @@
 package com.github.mrjimin.keis.http4k
 
 import com.github.mrjimin.keis.core.KeisClient
-import com.github.mrjimin.keis.core.model.http.HttpEngine
-import com.github.mrjimin.keis.core.model.http.HttpResponse
+import com.github.mrjimin.keis.core.internal.http.HttpEngine
+import com.github.mrjimin.keis.core.internal.http.HttpResponse
 import org.http4k.client.OkHttp
 import org.http4k.core.HttpHandler
 import org.http4k.core.Method

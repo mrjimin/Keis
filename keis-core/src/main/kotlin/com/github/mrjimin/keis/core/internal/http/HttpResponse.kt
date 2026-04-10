@@ -1,4 +1,4 @@
-package com.github.mrjimin.keis.core.model.http
+package com.github.mrjimin.keis.core.internal.http
 
 data class HttpResponse(
     val status: Int,

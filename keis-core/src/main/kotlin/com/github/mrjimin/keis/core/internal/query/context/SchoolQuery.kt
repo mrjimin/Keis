@@ -1,4 +1,4 @@
-package com.github.mrjimin.keis.core.model.query.context
+package com.github.mrjimin.keis.core.internal.query.context
 
 import com.github.mrjimin.keis.core.enums.EducationOffice
 import com.github.mrjimin.keis.core.model.domain.School

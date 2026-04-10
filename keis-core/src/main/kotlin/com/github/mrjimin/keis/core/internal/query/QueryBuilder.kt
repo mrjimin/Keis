@@ -1,9 +1,9 @@
-package com.github.mrjimin.keis.core.model.query
+package com.github.mrjimin.keis.core.internal.query
 
-import com.github.mrjimin.keis.core.model.query.context.PagingQuery
-import com.github.mrjimin.keis.core.model.query.context.QueryContext
-import com.github.mrjimin.keis.core.model.query.context.SchoolQuery
-import com.github.mrjimin.keis.core.model.query.context.StatsOptionQuery
+import com.github.mrjimin.keis.core.internal.query.context.PagingQuery
+import com.github.mrjimin.keis.core.internal.query.context.QueryContext
+import com.github.mrjimin.keis.core.internal.query.context.SchoolQuery
+import com.github.mrjimin.keis.core.internal.query.context.StatsOptionQuery
 
 abstract class QueryBuilder<Q : Query>: QueryContext, PagingQuery, StatsOptionQuery, SchoolQuery {
     protected val params = mutableMapOf<String, String>()

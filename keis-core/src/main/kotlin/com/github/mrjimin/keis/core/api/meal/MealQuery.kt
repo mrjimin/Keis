@@ -1,6 +1,6 @@
 package com.github.mrjimin.keis.core.api.meal
 
-import com.github.mrjimin.keis.core.model.query.Query
+import com.github.mrjimin.keis.core.internal.query.Query
 
 data class MealQuery(
     private val params: Map<String, String>

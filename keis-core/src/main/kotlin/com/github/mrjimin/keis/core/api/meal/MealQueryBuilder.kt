@@ -1,8 +1,8 @@
 package com.github.mrjimin.keis.core.api.meal
 
 import com.github.mrjimin.keis.core.enums.MealType
-import com.github.mrjimin.keis.core.model.query.QueryBuilder
-import com.github.mrjimin.keis.core.model.query.context.DateRangeQuery
+import com.github.mrjimin.keis.core.internal.query.QueryBuilder
+import com.github.mrjimin.keis.core.internal.query.context.DateRangeQuery
 
 class MealQueryBuilder : QueryBuilder<MealQuery>(), DateRangeQuery {
     override val fromKey: String = "MLSV_FROM_YMD"

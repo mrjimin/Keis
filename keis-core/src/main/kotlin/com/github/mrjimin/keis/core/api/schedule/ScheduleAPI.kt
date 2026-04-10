@@ -4,7 +4,7 @@ import com.github.mrjimin.keis.core.KeisClient
 import com.github.mrjimin.keis.core.model.domain.Schedule
 import com.github.mrjimin.keis.core.model.domain.School
 import com.github.mrjimin.keis.core.model.dto.ScheduleDTO
-import com.github.mrjimin.keis.core.model.query.single
+import com.github.mrjimin.keis.core.internal.query.single
 
 suspend fun KeisClient.schedules(
     block: ScheduleQueryBuilder.() -> Unit = {}

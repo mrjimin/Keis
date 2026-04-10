@@ -1,7 +1,7 @@
 package com.github.mrjimin.keis.core.api.timetable
 
 import com.github.mrjimin.keis.core.model.domain.School
-import com.github.mrjimin.keis.core.model.query.Query
+import com.github.mrjimin.keis.core.internal.query.Query
 
 data class TimetableQuery(
     val school: School,
