@@ -25,3 +25,7 @@ tasks.test {
         events("passed", "failed", "skipped")
     }
 }
+
+tasks.jar {
+    enabled = true
+}
