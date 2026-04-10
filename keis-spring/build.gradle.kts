@@ -28,3 +28,7 @@ tasks.test {
         events("passed", "failed", "skipped")
     }
 }
+
+tasks.named("bootJar") {
+    enabled = false
+}
