@@ -14,9 +14,6 @@ http4k = "6.39.0.0"
 spring-boot = "4.0.5"
 
 
-
-
-
 [libraries]
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
@@ -29,7 +26,6 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
 # http4k
-http4k = { module = "org.http4k:http4k-bom", version.ref = "http4k" }
 http4k-core = { module = "org.http4k:http4k-core", version.ref = "http4k"  }
 http4k-okhttp-client = { module = "org.http4k:http4k-client-okhttp", version.ref = "http4k"  }
 
@@ -40,12 +36,6 @@ spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-s
 
 
 
-
-
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-
-# spring
-kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
-spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
