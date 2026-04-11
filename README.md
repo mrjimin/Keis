@@ -1,10 +1,19 @@
-# Keis
+<div align="center">
 
-Kotlin 기반 NEIS(교육청) API 클라이언트 라이브러리
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./images/keis-text-light.png">
+    <img alt="Exposed logo" src="./images/keis-text-dark.png">
+  </picture>
+
+</div>
+
+<div align="center">
 
 [![](https://jitpack.io/v/mrjimin/Keis.svg)](https://jitpack.io/#mrjimin/Keis)
 [![GitHub License](https://img.shields.io/github/license/mrjimin/Keis?style=flat-square)](LICENSE)
-[![Kotlin](https://img.shields.io/badge/kotlin-2.3.20-blue.svg?logo=kotlin)](http://kotlinlang.org)k
+[![Kotlin](https://img.shields.io/badge/kotlin-2.3.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
+
+</div>
 
 ---
 
