@@ -39,7 +39,7 @@ val keisVersion = "2.0.2"
 dependencies {
     implementation("com.github.mrjimin.Keis:keis-ktor:$keisVersion") // ktor
     implementation("com.github.mrjimin.Keis:keis-http4k:$keisVersion") // http4k
-    implementation("com.github.mrjimin.Keis:keis-spring-boot:$keisVersion") // spring-boot (webFlux, RestClient)
+    implementation("com.github.mrjimin.Keis:keis-spring-boot:$keisVersion") // spring-boot (WebFlux, RestClient)
 }
 ```
 

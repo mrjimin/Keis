@@ -13,10 +13,10 @@ internal val defaultWebClient: WebClient by lazy {
 }
 
 internal fun buildUrlWithQuery(url: String, query: Map<String, String>): String {
-    var uriBuilder = UriComponentsBuilder.fromUriString(url)
+    val uriBuilder = UriComponentsBuilder.fromUriString(url)
 
     query.forEach { (key, value) ->
-        uriBuilder = uriBuilder.queryParam(key, value)
+        uriBuilder.queryParam(key, value)
     }
     return uriBuilder.build().toUriString()
 }
