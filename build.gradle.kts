@@ -20,6 +20,7 @@ subprojects {
     dependencies {
         implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
         testImplementation(kotlin("test"))
+        testImplementation("org.slf4j:slf4j-nop:2.0.17")
     }
 
     kotlin {

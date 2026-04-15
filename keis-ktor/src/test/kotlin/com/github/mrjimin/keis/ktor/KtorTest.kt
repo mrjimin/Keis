@@ -1,6 +1,7 @@
 package com.github.mrjimin.keis.ktor
 
 import com.github.mrjimin.keis.core.api.school.schoolContext
+import com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date
 import io.github.cdimascio.dotenv.Dotenv
 import kotlinx.coroutines.runBlocking
 import java.time.LocalDate
@@ -14,6 +15,12 @@ class KtorTest {
         val client = keisKtor(key.get("YOUR_API_KEY"))
         val context = client.schoolContext("우석고") ?: return@runBlocking
         println(context.school)
+
+        println(context.schedule {
+            dateRange {
+                thisWeek()
+            }
+        })
 //    println(school?.meal {
 //        date {
 //            today()
@@ -41,10 +48,10 @@ class KtorTest {
             classNumber(5)
             fillMissing()
 
-            // today()
-            dateRange {
-                single(LocalDate.of(2026, 4, 17))
-            }
+            today()
+//            dateRange {
+//                single(LocalDate.of(2026, 4, 17))
+//            }
         }.forEach {
             println("${it.period} - ${it.content ?: "공강"}")
         }
