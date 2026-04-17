@@ -1,10 +1,10 @@
 package com.github.mrjimin.keis.core.api.meal
 
 import com.github.mrjimin.keis.core.KeisClient
+import com.github.mrjimin.keis.core.internal.query.single
 import com.github.mrjimin.keis.core.model.domain.Meal
 import com.github.mrjimin.keis.core.model.domain.School
 import com.github.mrjimin.keis.core.model.dto.MealDTO
-import com.github.mrjimin.keis.core.internal.query.single
 
 suspend fun KeisClient.meals(
     block: MealQueryBuilder.() -> Unit = {}

@@ -15,12 +15,16 @@ class KtorTest {
         val client = keisKtor(key.get("YOUR_API_KEY"))
         val context = client.schoolContext("우석고") ?: return@runBlocking
         println(context.school)
+        println()
 
-        println(context.schedule {
+        context.schedules {
             dateRange {
-                thisWeek()
+                thisMonth()
             }
-        })
+        }.forEach {
+            println(it)
+        }
+
 //    println(school?.meal {
 //        date {
 //            today()

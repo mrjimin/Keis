@@ -28,5 +28,11 @@ internal fun startOfWeek(): LocalDate =
 internal fun endOfWeek(): LocalDate =
     now().with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY))
 
+internal fun startOfMonth(): LocalDate =
+    now().with(TemporalAdjusters.firstDayOfMonth())
+
+internal fun endOfMonth(): LocalDate =
+    now().with(TemporalAdjusters.lastDayOfMonth())
+
 internal fun String.toLocalDate(): LocalDate =
     LocalDate.parse(this, formatter)

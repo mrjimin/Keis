@@ -2,9 +2,9 @@ package com.github.mrjimin.keis.core.api.school
 
 import com.github.mrjimin.keis.core.KeisClient
 import com.github.mrjimin.keis.core.enums.EducationOffice
+import com.github.mrjimin.keis.core.internal.query.single
 import com.github.mrjimin.keis.core.model.domain.School
 import com.github.mrjimin.keis.core.model.dto.SchoolDTO
-import com.github.mrjimin.keis.core.internal.query.single
 
 suspend fun KeisClient.schools(
     block: SchoolQueryBuilder.() -> Unit = {}

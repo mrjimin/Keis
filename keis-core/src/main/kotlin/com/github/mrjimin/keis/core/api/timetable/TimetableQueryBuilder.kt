@@ -1,8 +1,8 @@
 package com.github.mrjimin.keis.core.api.timetable
 
-import com.github.mrjimin.keis.core.model.domain.School
 import com.github.mrjimin.keis.core.internal.query.QueryBuilder
 import com.github.mrjimin.keis.core.internal.query.context.DateRangeQuery
+import com.github.mrjimin.keis.core.model.domain.School
 
 class TimetableQueryBuilder(
     val school: School

@@ -2,7 +2,6 @@ package com.github.mrjimin.keis.core.model.dto
 
 import com.github.mrjimin.keis.core.enums.EducationOffice
 import com.github.mrjimin.keis.core.internal.toLocalDate
-import com.github.mrjimin.keis.core.model.domain.Meal
 import com.github.mrjimin.keis.core.model.domain.Schedule
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

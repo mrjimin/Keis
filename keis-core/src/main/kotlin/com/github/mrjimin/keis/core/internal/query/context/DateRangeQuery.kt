@@ -1,9 +1,6 @@
 package com.github.mrjimin.keis.core.internal.query.context
 
-import com.github.mrjimin.keis.core.internal.endOfWeek
-import com.github.mrjimin.keis.core.internal.now
-import com.github.mrjimin.keis.core.internal.startOfWeek
-import com.github.mrjimin.keis.core.internal.toYmd
+import com.github.mrjimin.keis.core.internal.*
 import java.time.LocalDate
 
 interface DateRangeQuery : QueryContext {
@@ -43,6 +40,11 @@ interface DateRangeQuery : QueryContext {
         fun thisWeek() = apply {
             from(startOfWeek())
             to(endOfWeek())
+        }
+
+        fun thisMonth() = apply {
+            from(startOfMonth())
+            to(endOfMonth())
         }
 
         fun range(from: LocalDate, to: LocalDate) = apply {
