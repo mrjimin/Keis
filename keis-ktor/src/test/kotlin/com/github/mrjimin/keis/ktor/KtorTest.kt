@@ -2,11 +2,9 @@ package com.github.mrjimin.keis.ktor
 
 import com.github.mrjimin.keis.core.api.school.schoolContext
 import com.github.mrjimin.keis.core.enums.MealType
-import com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date
 import io.github.cdimascio.dotenv.Dotenv
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
-import java.time.LocalDate
 
 class KtorTest {
 
