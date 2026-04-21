@@ -1,18 +1,19 @@
 package com.github.mrjimin.keis.ktor
 
 import com.github.mrjimin.keis.core.api.school.schoolContext
+import com.github.mrjimin.keis.core.enums.MealType
 import com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date
 import io.github.cdimascio.dotenv.Dotenv
 import kotlinx.coroutines.runBlocking
+import org.junit.jupiter.api.Test
 import java.time.LocalDate
-import kotlin.test.Test
 
 class KtorTest {
 
     @Test
     fun ktor() = runBlocking  {
-        val key = Dotenv.configure().directory("../").load()
-        val client = keisKtor(key.get("YOUR_API_KEY"))
+        val key = Dotenv.configure().directory("../").load().get("YOUR_API_KEY")
+        val client = keisKtor(key)
         val context = client.schoolContext("우석고") ?: return@runBlocking
         println(context.school)
         println()
@@ -25,27 +26,16 @@ class KtorTest {
             println(it)
         }
 
-//    println(school?.meal {
-//        date {
-//            today()
-//        }
-//        type(MealType.DINNER)
-//    }!!.content )
+        println("")
 
-//        val specificSchedule = school?.schedules {
-//            dateRange {
-//                single(LocalDate.of(2026, 4, 2))
-//            }
-//        }
-//
-//        println(specificSchedule)
-////
-//        println(school?.meals {
-//            type(MealType.DINNER)
-//            dateRange {
-//                thisWeek()
-//            }
-//        })
+        context.meals {
+            type(MealType.LUNCH)
+            today()
+        }.forEach {
+            println(it)
+        }
+
+        println("")
 
         context.timetables {
             grade(2)
