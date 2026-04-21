@@ -5,6 +5,14 @@
 포맷은 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)을 기반으로 하며,  
 이 프로젝트는 [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 규칙을 따릅니다.
 
+## 2.0.2 - 2026-04-17
+
+## 개선
+- `import` 최적화
+
+## 추가
+- `DateRangeQuery` 내 `thisMonth()` 함수 추가
+
 ## 2.0.2 - 2026-04-10
 
 ## 개선
