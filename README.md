@@ -11,7 +11,7 @@
 
 [![](https://jitpack.io/v/mrjimin/Keis.svg)](https://jitpack.io/#mrjimin/Keis)
 [![GitHub License](https://img.shields.io/github/license/mrjimin/Keis?style=flat-square)](LICENSE)
-[![Kotlin](https://img.shields.io/badge/kotlin-2.3.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-2.3.21-blue.svg?logo=kotlin)](http://kotlinlang.org)
 
 </div>
 
@@ -35,7 +35,7 @@ repositories {
     maven { url = uri("https://jitpack.io") }
 }
 
-val keisVersion = "2.0.2"
+val keisVersion = "2.0.3"
 dependencies {
     implementation("com.github.mrjimin.Keis:keis-ktor:$keisVersion") // ktor
     implementation("com.github.mrjimin.Keis:keis-http4k:$keisVersion") // http4k
