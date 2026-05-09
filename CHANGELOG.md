@@ -5,6 +5,11 @@
 포맷은 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)을 기반으로 하며,  
 이 프로젝트는 [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 규칙을 따릅니다.
 
+## 2.0.4 - 2026-05-09
+
+### 수정
+- `jitpack` 수정
+
 ## 2.0.3 - 2026-05-09
 
 ### 수정
