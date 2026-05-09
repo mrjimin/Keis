@@ -1,2 +1,4 @@
 jdk:
   - openjdk25
+install:
+  - ./gradlew publishToMavenLocal -Pgroup=com.github.mrjimin.keis -Dorg.gradle.java.installations.auto-download=false

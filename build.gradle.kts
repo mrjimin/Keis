@@ -6,7 +6,7 @@ plugins {
 group = "com.github.mrjimin.keis"
 version = "2.0.3"
 
-subprojects {
+allprojects {
 
     apply {
         plugin("org.jetbrains.kotlin.jvm")
