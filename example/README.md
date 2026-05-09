@@ -135,7 +135,7 @@ val advancedTimetable = context.timetables {
 학사일정 조회 예제입니다.
 
 ```kotlin
-    // 일정 조회
+// 일정 조회
 val schedules = context.schedules()
 
 // 오늘 일정
