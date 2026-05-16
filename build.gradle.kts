@@ -6,10 +6,10 @@ plugins {
 group = "com.github.mrjimin.keis"
 version = "2.0.5"
 
-allprojects {
-
+subprojects {
     apply {
         plugin("org.jetbrains.kotlin.jvm")
+        plugin("maven-publish")
     }
 
     repositories {
@@ -28,13 +28,6 @@ allprojects {
     tasks.test {
         useJUnitPlatform()
         ignoreFailures = true
-    }
-
-}
-
-subprojects {
-    apply {
-        plugin("maven-publish")
     }
 
     publishing {
