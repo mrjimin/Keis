@@ -8,6 +8,7 @@ dependencies {
     implementation(project(":http4k"))
     implementation(project(":spring-boot"))
     implementation(libs.kotlinx.coroutines.core)
+
 }
 
 tasks.withType<PublishToMavenLocal>().configureEach {

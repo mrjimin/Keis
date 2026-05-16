@@ -4,13 +4,12 @@ plugins {
 }
 
 group = "com.github.mrjimin.keis"
-version = "2.0.4"
+version = "2.0.5"
 
 allprojects {
 
     apply {
         plugin("org.jetbrains.kotlin.jvm")
-        plugin("maven-publish")
     }
 
     repositories {
@@ -31,6 +30,13 @@ allprojects {
         ignoreFailures = true
     }
 
+}
+
+subprojects {
+    apply {
+        plugin("maven-publish")
+    }
+
     publishing {
         publications {
             create<MavenPublication>("mavenJava") {
@@ -38,5 +44,4 @@ allprojects {
             }
         }
     }
-
 }
