@@ -18,8 +18,6 @@ allprojects {
     }
 
     dependencies {
-        api(project(":core"))
-
         implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
         testImplementation(kotlin("test"))
     }

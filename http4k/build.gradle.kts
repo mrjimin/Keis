@@ -6,6 +6,8 @@ group = "com.github.mrjimin.keis.http4k"
 version = parent!!.version
 
 dependencies {
+    api(project(":core"))
+
     implementation(libs.kotlinx.coroutines.core)
 
     implementation(libs.http4k.core)

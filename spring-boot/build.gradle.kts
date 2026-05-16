@@ -6,6 +6,8 @@ group = "com.github.mrjimin.keis.spring"
 version = parent!!.version
 
 dependencies {
+    api(project(":core"))
+
     compileOnly(libs.spring.boot.starter.webmvc)
     compileOnly(libs.spring.boot.starter.webflux)
 
