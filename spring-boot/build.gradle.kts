@@ -8,12 +8,13 @@ version = parent!!.version
 dependencies {
     api(project(":core"))
 
-    compileOnly(libs.spring.boot.starter.webmvc)
-    compileOnly(libs.spring.boot.starter.webflux)
+    implementation(libs.spring.boot.starter.webmvc)
+    implementation(libs.spring.boot.starter.webflux)
 
     // local
     implementation(libs.kotlinx.coroutines.core)
     implementation("org.jetbrains.kotlin:kotlin-reflect:2.3.20")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 }
 
 tasks.test {
