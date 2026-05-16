@@ -30,6 +30,10 @@ subprojects {
         ignoreFailures = true
     }
 
+    tasks.named<JavaCompile>("compileJava") {
+        dependsOn(tasks.named("compileKotlin"))
+    }
+
     publishing {
         publications {
             create<MavenPublication>("mavenJava") {
