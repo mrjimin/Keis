@@ -7,7 +7,7 @@ dependencyResolutionManagement {
 }
 
 include("example")
-include("keis-core")
-include("keis-http4k")
-include("keis-ktor")
-include("keis-spring-boot")
+include("core")
+include("http4k")
+include("ktor")
+include("spring-boot")

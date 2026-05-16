@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.3.21"
 serialization = "1.10.0"
-coroutines = "1.10.2"
+coroutines = "1.11.0"
 
 # ktor
 ktor = "3.4.2"
@@ -29,12 +29,9 @@ logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "lo
 http4k-core = { module = "org.http4k:http4k-core", version.ref = "http4k"  }
 http4k-okhttp-client = { module = "org.http4k:http4k-client-okhttp", version.ref = "http4k"  }
 
-
 # spring
 spring-boot-starter-webmvc = { module = "org.springframework.boot:spring-boot-starter-webmvc", version.ref = "spring-boot" }
 spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux", version.ref = "spring-boot" }
-
-
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
