@@ -45,7 +45,10 @@ data class ScheduleDTO(
     val grade5: String?,
 
     @SerialName("SIX_GRADE_EVENT_YN")
-    val grade6: String?
+    val grade6: String?,
+
+    @SerialName("LOAD_DTM")
+    val loadDateTime: String
 ): DomainConverter<Schedule> {
 
     override fun toDomain(): Schedule = Schedule(
@@ -62,6 +65,7 @@ data class ScheduleDTO(
             if (grade4 == "Y") add(4)
             if (grade5 == "Y") add(5)
             if (grade6 == "Y") add(6)
-        }
+        },
+        loadDateTime.toLocalDate()
     )
 }

@@ -15,4 +15,5 @@ data class Meal(
     val origin: String,
     val nutrition: String,
     val calories: Double,
+    val loadDateTime: LocalDate
 )

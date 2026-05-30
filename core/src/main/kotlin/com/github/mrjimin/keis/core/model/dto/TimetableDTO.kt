@@ -48,7 +48,10 @@ data class TimetableDTO(
     val classroom: String? = null,
 
     @SerialName("ITRT_CNTNT")
-    val content: String? = null
+    val content: String? = null,
+
+    @SerialName("LOAD_DTM")
+    val loadDateTime: String
 ): DomainConverter<Timetable> {
 
     override fun toDomain(): Timetable = Timetable(
@@ -64,6 +67,7 @@ data class TimetableDTO(
         order,
         major,
         classroom,
-        content
+        content,
+        loadDateTime.toLocalDate()
     )
 }

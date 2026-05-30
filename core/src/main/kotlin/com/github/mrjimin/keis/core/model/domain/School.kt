@@ -14,5 +14,6 @@ data class School(
     val businessType: BusinessType,
     val homepageUrl: String,
     val dayNightCourse: DayNightCourse,
-    val establishedDate: LocalDate
+    val establishedDate: LocalDate,
+    val loadDateTime: LocalDate
 )

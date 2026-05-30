@@ -10,5 +10,6 @@ data class Schedule(
     val date: LocalDate,
     val eventName: String,
     val eventContent: String?,
-    val targetGrades: List<Int>
+    val targetGrades: List<Int>,
+    val loadDateTime: LocalDate
 )

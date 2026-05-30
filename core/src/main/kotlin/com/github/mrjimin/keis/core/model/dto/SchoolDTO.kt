@@ -42,7 +42,10 @@ data class SchoolDTO(
     val dayNightCourseText: String,
 
     @SerialName("FOND_YMD")
-    val establishedDateText: String
+    val establishedDateText: String,
+
+    @SerialName("LOAD_DTM")
+    val loadDateTime: String
 ): DomainConverter<School> {
 
     override fun toDomain(): School = School(
@@ -56,6 +59,7 @@ data class SchoolDTO(
         BusinessType.from(businessTypeText),
         homepageUrl,
         DayNightCourse.from(dayNightCourseText),
-        establishedDateText.toLocalDate()
+        establishedDateText.toLocalDate(),
+        loadDateTime.toLocalDate()
     )
 }

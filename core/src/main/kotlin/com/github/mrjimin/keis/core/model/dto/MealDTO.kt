@@ -40,7 +40,10 @@ data class MealDTO(
     val nutrition: String,
 
     @SerialName("CAL_INFO")
-    val caloriesText: String
+    val caloriesText: String,
+
+    @SerialName("LOAD_DTM")
+    val loadDateTime: String
 ): DomainConverter<Meal> {
 
     override fun toDomain(): Meal = Meal(
@@ -53,6 +56,7 @@ data class MealDTO(
         content.replace("<br/>", "\n"),
         origin.replace("<br/>", "\n"),
         nutrition.replace("<br/>", "\n"),
-        caloriesText.removeSuffix(" Kcal").toDouble()
+        caloriesText.removeSuffix(" Kcal").toDouble(),
+        loadDateTime.toLocalDate()
     )
 }

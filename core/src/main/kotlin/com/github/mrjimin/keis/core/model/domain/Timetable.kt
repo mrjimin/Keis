@@ -17,4 +17,5 @@ data class Timetable(
     val major: String? = null,
     val classroom: String? = null,
     val content: String? = null,
+    val loadDateTime: LocalDate
 )
