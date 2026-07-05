@@ -1,7 +1,6 @@
 package com.github.mrjimin.keis.http4k
 
 import com.github.mrjimin.keis.core.api.school.schoolContext
-import com.github.mrjimin.keis.core.enums.MealType
 import io.github.cdimascio.dotenv.Dotenv
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
@@ -37,8 +36,8 @@ class Http4kTest {
 //
 //        println(specificSchedule)
 
-        println(context.meal {
-            type(MealType.LUNCH)
+        println(context.meals {
+            lunch()
             today()
         })
 //

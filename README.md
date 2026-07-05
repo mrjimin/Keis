@@ -11,7 +11,7 @@
 
 [![](https://jitpack.io/v/mrjimin/Keis.svg)](https://jitpack.io/#mrjimin/Keis)
 [![GitHub License](https://img.shields.io/github/license/mrjimin/Keis?style=flat-square)](LICENSE)
-[![Kotlin](https://img.shields.io/badge/kotlin-2.3.21-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/kotlin-2.4.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
 
 </div>
 
@@ -35,7 +35,7 @@ repositories {
     maven { url = uri("https://jitpack.io") }
 }
 
-val keisVersion = "2.0.6"
+val keisVersion = "3.0.0"
 dependencies {
     implementation("com.github.mrjimin.Keis:ktor:$keisVersion") // ktor
     implementation("com.github.mrjimin.Keis:http4k:$keisVersion") // http4k
@@ -48,32 +48,28 @@ dependencies {
 ## 🚀 Quick Start
 ```kotlin
 suspend fun main() {
-    val client = KeisClient("YOUR_API_KEY", engine) // keis("YOUR_API_KEY")
+    val client = keis("YOUR_API_KEY", engine) // keis("YOUR_API_KEY")
   
     // 학교 컨텍스트 생성
     val context = client.schoolContext("우석고") ?: return
 
     // Meal
     val lunch = context.meals {
-        dateRange { 
-            today()
-        }
-        type(MealType.LUNCH)
+        today()
+        type(MealType.LUNCH) // lunch()
     }
 
     // Timetable
     val advancedTimetable = context.timetables { 
         grade(2)
         classNumber(5)
-        fillMissing(true)
+        fill(true)
         today()
     }
     
     // Schedule
-    val specificSchedule = context.schedules { 
-        dateRange { 
-            single(LocalDate.of(2026, 4, 2)) 
-        }
+    val specificSchedule = context.schedules {
+        data(LocalDate.of(2026, 4, 2))
     }
   
 }
@@ -86,35 +82,32 @@ suspend fun main() {
 ### 🏫 [School](example/src/main/kotlin/com/github/mrjimin/keis/example/common/SchoolExample.kt)
 ```kotlin
 client.school("학교명")
-client.schools("학교명")
 ```
 
 ### 🍽️ [Meal](example/src/main/kotlin/com/github/mrjimin/keis/example/common/MealExample.kt)
 ```kotlin
-context.meal {
-    type(MealType.BREAKFAST)
+context.meals {
+    type(MealType.BREAKFAST) // breakfast()
     today()
 }
 
-context.meal { 
-    dateRange { 
-        thisWeek()
-    }
+context.meals { 
+    thisWeek()
 }
 ```
 
 ### 📚 [Timetable](example/src/main/kotlin/com/github/mrjimin/keis/example/common/TimetableExample.kt)
 ```kotlin
-context.timetable {
+context.timetables {
     grade(2)
     classNumber(5)
-    fillMissing()
+    fill()
 }
 ```
 
 ### 📅 [Schedule](example/src/main/kotlin/com/github/mrjimin/keis/example/common/ScheduleExample.kt)
 ```kotlin
-context.schedule {
+context.schedules {
   today()
   dayNightCourse(DayNightCourse.DAY)
   schoolCourse(SchoolCourse.GENERAL)

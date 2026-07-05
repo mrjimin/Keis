@@ -1,8 +1,8 @@
 package com.github.mrjimin.keis.example.common
 
 import com.github.mrjimin.keis.core.api.school.SchoolContext
-import com.github.mrjimin.keis.core.enums.DayNightCourse
-import com.github.mrjimin.keis.core.enums.SchoolCourse
+import com.github.mrjimin.keis.core.domain.enums.DayNightCourse
+import com.github.mrjimin.keis.core.domain.enums.SchoolCourse
 import java.time.LocalDate
 
 suspend fun scheduleExample(context: SchoolContext) {
@@ -12,17 +12,12 @@ suspend fun scheduleExample(context: SchoolContext) {
 
     // 오늘 일정
     val todaySchedule = context.schedules {
-        dateRange {
-            today()
-        }
-        // today() 사용가능
+        today()
     }
 
     // 특정 날짜 일정
     val specificSchedule = context.schedules {
-        dateRange {
-            single(LocalDate.of(2026, 4, 2))
-        }
+        date(LocalDate.of(2026, 4, 2))
     }
 
     // 주야 과정 필터

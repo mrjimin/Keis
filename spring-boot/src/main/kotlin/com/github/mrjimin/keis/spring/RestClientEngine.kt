@@ -3,6 +3,7 @@ package com.github.mrjimin.keis.spring
 import com.github.mrjimin.keis.core.KeisClient
 import com.github.mrjimin.keis.core.internal.http.HttpEngine
 import com.github.mrjimin.keis.core.internal.http.HttpResponse
+import com.github.mrjimin.keis.core.keis
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.springframework.web.client.RestClient
@@ -25,5 +26,8 @@ class RestClientEngine(
         }
 }
 
-fun keisRestClient(key: String, client: RestClient = defaultRestClient, coroutineContext: CoroutineContext = Dispatchers.IO): KeisClient =
-    KeisClient(key, RestClientEngine(client, coroutineContext))
+fun keisRestClient(
+    key: String,
+    client: RestClient = defaultRestClient,
+    coroutineContext: CoroutineContext = Dispatchers.IO
+): KeisClient = keis(key, RestClientEngine(client, coroutineContext))

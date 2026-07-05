@@ -10,17 +10,12 @@ suspend fun timetableExample(context: SchoolContext) {
 
     // 오늘 시간표
     val todayTimetable = context.timetables {
-        dateRange {
-            today()
-        }
-        // today() 사용가능
+        today()
     }
 
     // 특정 날짜 시간표
     val specificDateTimetable = context.timetables {
-        dateRange {
-            single(LocalDate.of(2026, 3, 30))
-        }
+        date(LocalDate.of(2026, 3, 30))
     }
 
     // 특정 반 시간표
@@ -33,16 +28,14 @@ suspend fun timetableExample(context: SchoolContext) {
     val filledTimetable = context.timetables {
          grade(2)
          classNumber(5)
-         fillMissing() // fillMissing(boolean = true)
+         fill() // fill(boolean = true)
     }
 
     // 기간 + 필터
     val advancedTimetable = context.timetables {
         grade(2)
         classNumber(5)
-        dateRange {
-            range(LocalDate.now(), LocalDate.now().plusDays(5))
-        }
-        fillMissing(true)
+        range(LocalDate.now(), LocalDate.now().plusDays(5))
+        fill()
     }
 }

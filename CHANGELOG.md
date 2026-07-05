@@ -2,8 +2,14 @@
 
 이 프로젝트의 모든 주요 변경 사항은 이 파일에 기록됩니다.
 
-포맷은 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)을 기반으로 하며,  
-이 프로젝트는 [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 규칙을 따릅니다.
+[//]: # (포맷은 [Keep a Changelog]&#40;https://keepachangelog.com/en/1.1.0/&#41;을 기반으로 하며,  )
+
+[//]: # (이 프로젝트는 [Semantic Versioning]&#40;https://semver.org/spec/v2.0.0.html&#41; 규칙을 따릅니다.)
+
+## 3.0.0 - 2026-07-05
+
+### 개선
+ - 전체 개선
 
 ## 2.0.6 - 2026-05-30
 

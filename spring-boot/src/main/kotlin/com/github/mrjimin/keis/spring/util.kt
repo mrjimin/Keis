@@ -18,5 +18,6 @@ internal fun buildUrlWithQuery(url: String, query: Map<String, String>): String 
     query.forEach { (key, value) ->
         uriBuilder.queryParam(key, value)
     }
+
     return uriBuilder.build().toUriString()
 }

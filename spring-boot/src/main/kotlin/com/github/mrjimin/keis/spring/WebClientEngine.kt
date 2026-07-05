@@ -3,6 +3,7 @@ package com.github.mrjimin.keis.spring
 import com.github.mrjimin.keis.core.KeisClient
 import com.github.mrjimin.keis.core.internal.http.HttpEngine
 import com.github.mrjimin.keis.core.internal.http.HttpResponse
+import com.github.mrjimin.keis.core.keis
 import kotlinx.coroutines.reactive.awaitSingle
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.toEntity
@@ -23,5 +24,7 @@ class WebClientEngine(
 
 }
 
-fun keisWebClient(key: String, client: WebClient = defaultWebClient): KeisClient =
-    KeisClient(key, WebClientEngine(client))
+fun keisWebClient(
+    key: String,
+    client: WebClient = defaultWebClient
+): KeisClient = keis(key, WebClientEngine(client))

@@ -3,6 +3,7 @@ package com.github.mrjimin.keis.http4k
 import com.github.mrjimin.keis.core.KeisClient
 import com.github.mrjimin.keis.core.internal.http.HttpEngine
 import com.github.mrjimin.keis.core.internal.http.HttpResponse
+import com.github.mrjimin.keis.core.keis
 import org.http4k.client.OkHttp
 import org.http4k.core.HttpHandler
 import org.http4k.core.Method
@@ -24,5 +25,7 @@ class Http4kEngine(
         }
 }
 
-fun keisHttp4k(key: String, client: HttpHandler = OkHttp()): KeisClient =
-    KeisClient(key, Http4kEngine(client))
+fun keisHttp4k(
+    key: String,
+    client: HttpHandler = OkHttp()
+): KeisClient = keis(key, Http4kEngine(client))

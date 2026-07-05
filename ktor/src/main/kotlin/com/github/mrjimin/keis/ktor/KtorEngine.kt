@@ -3,6 +3,7 @@ package com.github.mrjimin.keis.ktor
 import com.github.mrjimin.keis.core.KeisClient
 import com.github.mrjimin.keis.core.internal.http.HttpEngine
 import com.github.mrjimin.keis.core.internal.http.HttpResponse
+import com.github.mrjimin.keis.core.keis
 import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
@@ -24,5 +25,7 @@ class KtorEngine(
 
 }
 
-fun keisKtor(key: String, client: HttpClient = defaultClient): KeisClient =
-    KeisClient(key, KtorEngine(client))
+fun keisKtor(
+    key: String,
+    client: HttpClient = createKtorHttpClient()
+): KeisClient = keis(key, KtorEngine(client))

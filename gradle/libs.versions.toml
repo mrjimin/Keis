@@ -1,17 +1,17 @@
 [versions]
-kotlin = "2.3.21"
+kotlin = "2.4.0"
 serialization = "1.10.0"
 coroutines = "1.11.0"
 
 # ktor
-ktor = "3.4.2"
-logback = "1.5.32"
+ktor = "3.5.1"
+logback = "1.5.37"
 
 # http4k
-http4k = "6.39.0.0"
+http4k = "6.54.0.0"
 
 # spring
-spring-boot = "4.0.5"
+spring-boot = "4.1.0"
 
 
 [libraries]
@@ -20,7 +20,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 
 # ktor
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
-ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-okhttp-jvm = { module = "io.ktor:ktor-client-okhttp-jvm", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
