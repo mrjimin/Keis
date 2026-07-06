@@ -2,9 +2,6 @@ plugins {
     kotlin("jvm")
 }
 
-group = "com.github.mrjimin.keis.spring"
-version = parent!!.version
-
 dependencies {
     api(project(":core"))
 

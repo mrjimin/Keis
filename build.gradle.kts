@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.github.mrjimin.keis"
-version = "3.0.0"
+version = "3.0.1"
 
 subprojects {
     apply {
