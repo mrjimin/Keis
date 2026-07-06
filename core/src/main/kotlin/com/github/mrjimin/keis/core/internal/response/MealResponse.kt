@@ -41,19 +41,3 @@ data class MealResponse(
     @SerialName("LOAD_DTM")
     val loadDateTime: String
 )
-//    : DomainConverter<Meal> {
-//
-//    override fun toDomain(): Meal = Meal(
-//        EducationOffice.from(officeCode, officeName),
-//        schoolCode,
-//        schoolName,
-//        MealType.from(mealTypeText),
-//        dateText.toLocalDate(),
-//        mealCountText.toInt(),
-//        content.replace("<br/>", "\n"),
-//        origin.replace("<br/>", "\n"),
-//        nutrition.replace("<br/>", "\n"),
-//        caloriesText.removeSuffix(" Kcal").toDouble(),
-//        loadDateTime.toLocalDate()
-//    )
-//}

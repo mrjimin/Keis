@@ -50,23 +50,3 @@ data class TimetableResponse(
     @SerialName("LOAD_DTM")
     val loadDateTime: String
 )
-//
-//    : DomainConverter<Timetable> {
-//
-//    override fun toDomain(): Timetable = Timetable(
-//        EducationOffice.from(officeCode, officeName),
-//        schoolCode,
-//        schoolName,
-//        grade,
-//        classNumber,
-//        period,
-//        year,
-//        semester,
-//        dateText.toLocalDate(),
-//        order,
-//        major,
-//        classroom,
-//        content,
-//        loadDateTime.toLocalDate()
-//    )
-//}

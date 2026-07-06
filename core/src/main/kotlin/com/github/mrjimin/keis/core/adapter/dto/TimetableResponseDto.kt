@@ -1,10 +1,11 @@
-package com.github.mrjimin.keis.core.domain
+package com.github.mrjimin.keis.core.adapter.dto
 
-import com.github.mrjimin.keis.core.domain.enums.EducationOffice
-import java.time.LocalDate
+import kotlinx.serialization.Serializable
 
-data class Timetable(
-    val office: EducationOffice,
+@Serializable
+data class TimetableResponseDto(
+    val officeCode: String,
+    val officeName: String,
     val schoolCode: Int,
     val schoolName: String,
     val grade: Int,
@@ -12,10 +13,10 @@ data class Timetable(
     val period: Int,
     val year: Int,
     val semester: Int,
-    val date: LocalDate,
+    val date: String,
     val order: String? = null,
     val major: String? = null,
     val classroom: String? = null,
     val content: String? = null,
-    val loadDateTime: LocalDate
+    val loadDateTime: String
 )
