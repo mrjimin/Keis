@@ -76,29 +76,3 @@ subprojects {
         }
     }
 }
-
-tasks.register<Copy>("prepareDokka") {
-    description = "Prepare Dokka HTML site"
-
-    dependsOn(
-        ":core:dokkaGenerateHtml",
-        ":ktor:dokkaGenerateHtml",
-        ":spring:dokkaGenerateHtml"
-    )
-
-    into(layout.buildDirectory.dir("dokka-site"))
-
-    from(project(":core").layout.buildDirectory.dir("dokka/html")) {
-        into("core")
-    }
-
-    from(project(":ktor").layout.buildDirectory.dir("dokka/html")) {
-        into("ktor")
-    }
-
-    from(project(":spring").layout.buildDirectory.dir("dokka/html")) {
-        into("spring")
-    }
-
-    from("docs/index.html")
-}
