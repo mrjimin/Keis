@@ -3,7 +3,7 @@ package com.github.mrjimin.keis.core.api.timetable
 import com.github.mrjimin.keis.core.query.DateQuery
 
 class TimetableQuery : DateQuery(
-    "TI_YMD",
+    "ALL_TI_YMD",
     "TI_FROM_YMD",
     "TI_TO_YMD"
 ) {

@@ -15,7 +15,15 @@ abstract class DateQuery(
     }
 
     fun date(date: LocalDate) {
-        range(date, date)
+        put(singleKey, date.toYmd())
+    }
+
+    fun date(date: String) {
+        put(singleKey, date)
+    }
+
+    fun date(year: Int, month: Int, dayOfMonth: Int) {
+        put(singleKey, LocalDate.of(year, month, dayOfMonth))
     }
 
     fun range(from: LocalDate, to: LocalDate) {

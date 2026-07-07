@@ -14,12 +14,21 @@ class Http4kTest {
         val context = client.schoolContext("우석고") ?: return@runBlocking
         println(context.school)
 
-
-        val a = run {
-            println("a")
-            1
+        context.timetables {
+            grade(2)
+            classNumber(5)
+            fill()
+            // date(LocalDate.of(2026, 6, 15))
+            date("20260615")
+        }.let {
+            println(it)
         }
-        println(a)
+//
+//        val a = run {
+//            println("a")
+//            1
+//        }
+//        println(a)
 
 //    println(school?.meal {
 //        date {
@@ -36,10 +45,10 @@ class Http4kTest {
 //
 //        println(specificSchedule)
 
-        println(context.meals {
-            lunch()
-            today()
-        })
+//        println(context.meals {
+//            lunch()
+//            today()
+//        })
 //
 //        println(school?.schedules {})
 //        println(context.timetable {
