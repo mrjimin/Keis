@@ -23,7 +23,6 @@ dokka {
     dokkaPublications.html {
         moduleName.set("KEIS")
         pluginsConfiguration.html {
-            customAssets.from("images/keis_image.png")
             footerMessage.set("© 2026 mrjimin. All rights reserved.")
         }
     }
@@ -72,7 +71,6 @@ subprojects {
         moduleName.set(project.name)
 
         pluginsConfiguration.html {
-            customAssets.from(rootProject.file("images/keis_image.png"))
             footerMessage.set("© 2026 mrjimin. All rights reserved.")
         }
     }
