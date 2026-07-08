@@ -11,16 +11,25 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    dokka(project(":core"))
+    dokka(project(":example"))
+    dokka(project(":http4k"))
+    dokka(project(":ktor"))
+    dokka(project(":spring-boot"))
+}
+
 dokka {
-    moduleName.set("KEIS")
+    dokkaPublications.html {
+        moduleName.set("KEIS")
+        pluginsConfiguration.html {
+            customAssets.from(
+                rootProject.layout.projectDirectory
+                    .file("images/keis_image.png")
+            )
 
-    pluginsConfiguration.html {
-        customAssets.from(
-            rootProject.layout.projectDirectory
-                .file("images/keis_image.png")
-        )
-
-        footerMessage.set("(c) mrjimin")
+            footerMessage.set("(c) mrjimin")
+        }
     }
 }
 
