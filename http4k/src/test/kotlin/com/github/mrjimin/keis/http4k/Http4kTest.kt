@@ -2,7 +2,6 @@ package com.github.mrjimin.keis.http4k
 
 import com.github.mrjimin.keis.core.api.school.schoolContext
 import io.github.cdimascio.dotenv.Dotenv
-import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 
 class Http4kTest {

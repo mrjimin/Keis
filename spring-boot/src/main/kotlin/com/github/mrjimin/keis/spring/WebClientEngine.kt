@@ -6,7 +6,6 @@ import com.github.mrjimin.keis.core.internal.http.HttpResponse
 import com.github.mrjimin.keis.core.keis
 import kotlinx.coroutines.reactive.awaitSingle
 import kotlinx.coroutines.runBlocking
-import org.springframework.web.client.RestClient
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.toEntity
 
