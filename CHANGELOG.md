@@ -6,6 +6,11 @@
 
 [//]: # (이 프로젝트는 [Semantic Versioning]&#40;https://semver.org/spec/v2.0.0.html&#41; 규칙을 따릅니다.)
 
+## 3.1.0 - 2026-07-09
+
+### 개선
+ - `suspending` 분활
+
 ## 3.0.4 - 2026-07-07
 
 ### 추가 
