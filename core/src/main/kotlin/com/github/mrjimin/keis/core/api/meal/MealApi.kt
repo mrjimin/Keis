@@ -15,7 +15,7 @@ import com.github.mrjimin.keis.core.endpoint.MealEndpoint
  * @param block 조회 조건을 설정하는 DSL
  * @return 조회된 급식 정보 목록
  */
-suspend fun KeisClient.meals(
+fun KeisClient.meals(
     block: MealQuery.() -> Unit = {}
 ): List<Meal> = fetch(
     MealEndpoint,
@@ -33,7 +33,7 @@ suspend fun KeisClient.meals(
  * @param block 추가 조회 조건을 설정하는 DSL
  * @return 조회된 급식 정보 목록
  */
-suspend fun KeisClient.meals(
+fun KeisClient.meals(
     school: School,
     block: MealQuery.() -> Unit = {}
 ): List<Meal> = meals {

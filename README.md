@@ -47,7 +47,7 @@ dependencies {
 
 ## 🚀 Quick Start
 ```kotlin
-suspend fun main() {
+fun main() {
     val client = keis("YOUR_API_KEY", engine) // keis("YOUR_API_KEY")
   
     // 학교 컨텍스트 생성

@@ -21,7 +21,7 @@ import com.github.mrjimin.keis.core.endpoint.TimetableEndpoint
  * @param block 시간표 조회 조건을 설정하는 DSL
  * @return 조회된 시간표 목록
  */
-suspend fun KeisClient.timetables(
+fun KeisClient.timetables(
     schoolType: SchoolType,
     block: TimetableQuery.() -> Unit = {}
 ): List<Timetable> {
@@ -55,7 +55,7 @@ suspend fun KeisClient.timetables(
  * @param block 추가 시간표 조회 조건을 설정하는 DSL
  * @return 조회된 시간표 목록
  */
-suspend fun KeisClient.timetables(
+fun KeisClient.timetables(
     school: School,
     block: TimetableQuery.() -> Unit = {}
 ): List<Timetable> = timetables(school.type) {

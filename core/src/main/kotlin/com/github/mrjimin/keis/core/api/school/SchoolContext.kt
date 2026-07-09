@@ -39,7 +39,7 @@ class SchoolContext(
      *
      * @param block 추가 조회 조건을 설정하는 DSL
      */
-    suspend fun meals(
+    fun meals(
         block: MealQuery.() -> Unit = {}
     ) = client.meals(school, block)
 
@@ -48,7 +48,7 @@ class SchoolContext(
      *
      * @param block 추가 조회 조건을 설정하는 DSL
      */
-    suspend fun schedules(
+    fun schedules(
         block: ScheduleQuery.() -> Unit = {}
     ) = client.schedules(school, block)
 
@@ -57,7 +57,7 @@ class SchoolContext(
      *
      * @param block 추가 조회 조건을 설정하는 DSL
      */
-    suspend fun timetables(
+    fun timetables(
         block: TimetableQuery.() -> Unit = {}
     ) = client.timetables(school, block)
 }

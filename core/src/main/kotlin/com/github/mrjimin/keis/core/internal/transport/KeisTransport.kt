@@ -8,7 +8,7 @@ internal class KeisTransport(
     private val engine: HttpEngine
 ) {
 
-    suspend fun request(
+    fun request(
         endpoint: String,
         query: Map<String, String>
     ): HttpResponse {

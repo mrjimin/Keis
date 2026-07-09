@@ -13,7 +13,7 @@ import com.github.mrjimin.keis.core.endpoint.SchoolEndpoint
  * @param block 조회 조건을 설정하는 DSL
  * @return 조회된 학교 목록
  */
-suspend fun KeisClient.schools(
+fun KeisClient.schools(
     block: SchoolQuery.() -> Unit = {}
 ): List<School> = fetch(
     SchoolEndpoint,
@@ -29,7 +29,7 @@ suspend fun KeisClient.schools(
  * @param name 학교명
  * @return 조회된 학교 또는 없으면 `null`
  */
-suspend fun KeisClient.school(
+fun KeisClient.school(
     name: String
 ): School? = schools {
     schoolName(name)
@@ -42,7 +42,7 @@ suspend fun KeisClient.school(
  * @param code 학교 코드
  * @return 조회된 학교 또는 없으면 `null`
  */
-suspend fun KeisClient.school(
+fun KeisClient.school(
     office: EducationOffice,
     code: Int
 ): School? = schools {
@@ -57,7 +57,7 @@ suspend fun KeisClient.school(
  * @param block 조회 조건을 설정하는 DSL
  * @return 생성된 [SchoolContext] 또는 조회 결과가 없으면 `null`
  */
-suspend fun KeisClient.schoolContext(
+fun KeisClient.schoolContext(
     block: SchoolQuery.() -> Unit = {}
 ): SchoolContext? = schools(block).firstOrNull()?.asContext(this)
 
@@ -69,6 +69,6 @@ suspend fun KeisClient.schoolContext(
  * @param name 학교명
  * @return 생성된 [SchoolContext] 또는 조회 결과가 없으면 `null`
  */
-suspend fun KeisClient.schoolContext(
+fun KeisClient.schoolContext(
     name: String
 ): SchoolContext? = school(name)?.asContext(this)

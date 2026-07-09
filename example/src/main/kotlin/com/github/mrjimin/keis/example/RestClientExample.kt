@@ -7,7 +7,7 @@ import com.github.mrjimin.keis.example.common.schoolExample
 import com.github.mrjimin.keis.example.common.timetableExample
 import com.github.mrjimin.keis.spring.keisRestClient
 
-suspend fun main() {
+fun main() {
     // keisRestClient(key: String, client: HttpHandler)
     val client = keisRestClient("YOUR_API_KEY")
     val context = client.schoolContext("우석고") ?: return

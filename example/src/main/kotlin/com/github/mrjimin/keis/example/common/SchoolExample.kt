@@ -6,7 +6,7 @@ import com.github.mrjimin.keis.core.api.school.school
 import com.github.mrjimin.keis.core.api.school.schoolContext
 import com.github.mrjimin.keis.core.domain.enums.EducationOffice
 
-suspend fun schoolExample(client: KeisClient) {
+fun schoolExample(client: KeisClient) {
 
     // 이름으로 학교 조회
     val school = client.school("우석고")

@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test
 class Http4kTest {
 
     @Test
-    fun http4k() = runBlocking  {
+    fun http4k()  {
         val key = Dotenv.configure().directory("../").load()
         val client = keisHttp4k(key.get("YOUR_API_KEY"))
-        val context = client.schoolContext("우석고") ?: return@runBlocking
+        val context = client.schoolContext("우석고") ?: return
         println(context.school)
 
         context.timetables {

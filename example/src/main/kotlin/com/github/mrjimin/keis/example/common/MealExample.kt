@@ -4,7 +4,7 @@ import com.github.mrjimin.keis.core.api.school.SchoolContext
 import com.github.mrjimin.keis.core.domain.enums.MealType
 import java.time.LocalDate
 
-suspend fun mealExample(context: SchoolContext) {
+fun mealExample(context: SchoolContext) {
 
     // 급식 조회
     val meals = context.meals()

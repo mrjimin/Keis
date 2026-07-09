@@ -32,7 +32,7 @@ class KeisClient internal constructor(
      * @return 파싱된 API 응답 데이터 목록
      * @throws IllegalArgumentException API 응답 상태 코드가 성공(200)이 아닌 경우
      */
-    internal suspend fun <P : Query, R, D> KeisClient.fetch(
+    internal fun <P : Query, R, D> KeisClient.fetch(
         endpoint: Endpoint<R, D>,
         queryFactory: () -> P,
         block: P.() -> Unit = {}

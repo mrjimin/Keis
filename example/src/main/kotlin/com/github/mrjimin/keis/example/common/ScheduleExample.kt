@@ -5,7 +5,7 @@ import com.github.mrjimin.keis.core.domain.enums.DayNightCourse
 import com.github.mrjimin.keis.core.domain.enums.SchoolCourse
 import java.time.LocalDate
 
-suspend fun scheduleExample(context: SchoolContext) {
+fun scheduleExample(context: SchoolContext) {
 
     // 일정 조회
     val schedules = context.schedules()

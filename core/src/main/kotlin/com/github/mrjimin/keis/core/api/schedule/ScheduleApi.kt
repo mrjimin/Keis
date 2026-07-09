@@ -15,7 +15,7 @@ import com.github.mrjimin.keis.core.endpoint.ScheduleEndpoint
  * @param block 조회 조건을 설정하는 DSL
  * @return 조회된 학사일정 목록
  */
-suspend fun KeisClient.schedules(
+fun KeisClient.schedules(
     block: ScheduleQuery.() -> Unit = {}
 ): List<Schedule> = fetch(
     ScheduleEndpoint,
@@ -33,7 +33,7 @@ suspend fun KeisClient.schedules(
  * @param block 추가 조회 조건을 설정하는 DSL
  * @return 조회된 학사일정 목록
  */
-suspend fun KeisClient.schedules(
+fun KeisClient.schedules(
     school: School,
     block: ScheduleQuery.() -> Unit = {}
 ): List<Schedule> = schedules {

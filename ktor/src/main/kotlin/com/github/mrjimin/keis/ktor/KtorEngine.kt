@@ -33,7 +33,7 @@ class KtorEngine(
      * @param query 요청에 추가할 Query Parameter
      * @return KEIS Core에서 사용하는 HTTP 응답 객체
      */
-    override suspend fun get(
+    override fun get(
         url: String,
         query: Map<String, String>
     ): HttpResponse {

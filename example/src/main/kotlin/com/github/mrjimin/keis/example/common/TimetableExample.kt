@@ -3,7 +3,7 @@ package com.github.mrjimin.keis.example.common
 import com.github.mrjimin.keis.core.api.school.SchoolContext
 import java.time.LocalDate
 
-suspend fun timetableExample(context: SchoolContext) {
+fun timetableExample(context: SchoolContext) {
 
     // 시간표 조회
     val timetable = context.timetables()
