@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.mrjimin.keis"
-version = "3.0.5"
+version = "3.1.0"
 
 repositories {
     mavenCentral()

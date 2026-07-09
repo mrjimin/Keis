@@ -21,6 +21,19 @@ internal class KeisTransport(
         )
     }
 
+    suspend fun suspendingRequest(
+        endpoint: String,
+        query: Map<String, String>
+    ): HttpResponse {
+
+        val url = "https://open.neis.go.kr/hub/$endpoint"
+
+        return engine.suspendingGet(
+            url,
+            query + defaultQuery()
+        )
+    }
+
     private fun defaultQuery() =
         mapOf(
             "KEY" to key,

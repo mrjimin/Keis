@@ -5,34 +5,27 @@ import com.github.mrjimin.keis.core.internal.http.HttpEngine
 import com.github.mrjimin.keis.core.internal.http.HttpResponse
 import com.github.mrjimin.keis.core.keis
 import kotlinx.coroutines.reactive.awaitSingle
+import kotlinx.coroutines.runBlocking
+import org.springframework.web.client.RestClient
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.toEntity
 
 /**
- * Spring [WebClient]를 사용하여 HTTP 요청을 처리하는 [HttpEngine] 구현체입니다.
+ * Spring WebClient 기반 HTTP 엔진 구현체입니다.
  *
- * KEIS Core의 HTTP 추상화 계층과 Spring WebFlux 클라이언트를 연결합니다.
- *
- * Reactor 기반의 비동기 요청을 Kotlin Coroutines 환경에서 사용할 수 있도록
- * 변환하여 제공합니다.
- *
- * @property client HTTP 요청을 수행할 Spring WebClient
+ * KEIS Core의 HTTP 추상화와 Spring WebClient를 연결합니다.
  */
 class WebClientEngine(
     private val client: WebClient
 ) : HttpEngine {
 
     /**
-     * GET 요청을 수행합니다.
-     *
-     * 전달받은 Query Parameter를 URL에 추가한 뒤
-     * Spring WebClient를 통해 비동기 요청을 수행합니다.
+     * 비동기 GET 요청을 수행합니다.
      *
      * @param url 요청 URL
-     * @param query 요청에 추가할 Query Parameter
-     * @return KEIS Core에서 사용하는 HTTP 응답 객체
+     * @param query Query Parameter
      */
-    override fun get(
+    override suspend fun suspendingGet(
         url: String,
         query: Map<String, String>
     ): HttpResponse {
@@ -44,13 +37,27 @@ class WebClientEngine(
 
         return HttpResponse(response.statusCode.value(), response.body ?: "")
     }
+
+    /**
+     * GET 요청을 수행합니다.
+     *
+     * @param url 요청 URL
+     * @param query Query Parameter
+     */
+    override fun get(
+        url: String,
+        query: Map<String, String>
+    ): HttpResponse = runBlocking {
+        suspendingGet(url, query)
+    }
 }
 
 /**
  * Spring WebClient 기반 KEIS API 클라이언트를 생성합니다.
  *
- * 기본 HTTP 클라이언트로 [defaultWebClient]를 사용하며,
- * 필요에 따라 사용자 정의 [WebClient]를 주입할 수 있습니다.
+ * 기본 HTTP 클라이언트로 [defaultWebClient]를 사용합니다.
+ *
+ * 사용자 정의 [WebClient]를 전달할 수 있습니다.
  *
  * ```
  * val client = keisWebClient(
@@ -58,9 +65,8 @@ class WebClientEngine(
  * )
  * ```
  *
- * @param key KEIS API 인증 키
- * @param client HTTP 요청에 사용할 WebClient
- * @return Spring WebClient를 사용하는 KEIS 클라이언트
+ * @param key API 인증 키
+ * @param client HTTP 요청에 사용할 클라이언트
  */
 fun keisWebClient(
     key: String,
