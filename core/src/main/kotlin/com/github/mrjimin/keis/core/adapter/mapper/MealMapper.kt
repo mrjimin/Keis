@@ -15,8 +15,8 @@ fun Meal.toDto(): MealResponseDto =
         date.toYmd(),
         mealCount,
         content.toPlainText(),
-        origin,
-        nutrition,
+        origin.toPlainText(),
+        nutrition.toPlainText(),
         calories,
         loadDateTime.toYmd(),
     )
