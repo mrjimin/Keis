@@ -1,4 +1,4 @@
-rootProject.name = "Keis"
+rootProject.name = "keis"
 
 dependencyResolutionManagement {
     repositories {
